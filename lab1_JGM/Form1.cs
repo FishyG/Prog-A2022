@@ -17,15 +17,6 @@ namespace lab1_JGM
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void button_RemoveSpace(object sender, EventArgs e)
         {
             resultTextBox.Text = inputTextBox.Text.Replace(" ","");
@@ -64,7 +55,7 @@ namespace lab1_JGM
             }
         }
 
-        private void button5_MajMin(object sender, EventArgs e)
+        private void button_MajMin(object sender, EventArgs e)
         {
             resultTextBox.Text = "";    // Vide la string 
 
@@ -73,13 +64,9 @@ namespace lab1_JGM
             {
                 i++;
                 if (i % 2 == 1)
-                {
                     resultTextBox.Text = resultTextBox.Text + c.ToString().ToUpper();
-                }
                 else
-                {
                     resultTextBox.Text = resultTextBox.Text + c.ToString().ToLower();
-                }
             }
         }
 
@@ -113,7 +100,7 @@ namespace lab1_JGM
         {
             int i = 1;
 
-            button7.PerformClick(); // Call to remove the " "
+            btnOnlyOneSpace.PerformClick(); // Call to remove the " "
 
             if (resultTextBox.Text.Trim().Length == 0)
             {
