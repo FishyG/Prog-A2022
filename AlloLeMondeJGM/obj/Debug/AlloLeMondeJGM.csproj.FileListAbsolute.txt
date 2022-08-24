@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\bin\Debug\AlloLeMondeJGM.exe.config
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\bin\Debug\AlloLeMondeJGM.exe
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\bin\Debug\AlloLeMondeJGM.pdb
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.Form1.resources
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.Properties.Resources.resources
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.exe
+C:\Users\Jessy\source\repos\AlloLeMondeJGM\obj\Debug\AlloLeMondeJGM.pdb

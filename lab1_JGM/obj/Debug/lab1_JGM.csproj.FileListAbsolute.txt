@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\lab1_JGM\bin\Debug\lab1_JGM.exe.config
+C:\Users\Jessy\source\repos\lab1_JGM\bin\Debug\lab1_JGM.exe
+C:\Users\Jessy\source\repos\lab1_JGM\bin\Debug\lab1_JGM.pdb
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.Properties.Resources.resources
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.exe
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.pdb
+C:\Users\Jessy\source\repos\lab1_JGM\obj\Debug\lab1_JGM.frmLab1.resources
