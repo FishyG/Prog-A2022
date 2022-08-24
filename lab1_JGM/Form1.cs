@@ -15,6 +15,14 @@ namespace lab1_JGM
         public frmLab1()
         {
             InitializeComponent();
+
+            bool rotate = false;
+
+            if(rotate)
+            {
+
+                Task.Delay(500);
+            }
         }
 
         private void button_RemoveSpace(object sender, EventArgs e)
@@ -117,12 +125,12 @@ namespace lab1_JGM
                 }
             }
 
-            resultTextBox.Text = inputTextBox.Text + Convert.ToString(i);
+            resultTextBox.Text = "Nombre de mot(s) : " + Convert.ToString(i);
         }
 
         private void button_Rotate(object sender, EventArgs e)
         {
-
+            btnRotate.Text = "lmao";
         }
 
         private void button_Ascii(object sender, EventArgs e)

@@ -53,6 +53,7 @@
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(293, 20);
             this.inputTextBox.TabIndex = 0;
+            this.inputTextBox.Text = "Hello One 2 3";
             // 
             // label1
             // 
@@ -81,110 +82,110 @@
             this.resultTextBox.Size = new System.Drawing.Size(293, 20);
             this.resultTextBox.TabIndex = 3;
             // 
-            // button1
+            // btnRemoveSpace
             // 
             this.btnRemoveSpace.Location = new System.Drawing.Point(18, 125);
-            this.btnRemoveSpace.Name = "button1";
+            this.btnRemoveSpace.Name = "btnRemoveSpace";
             this.btnRemoveSpace.Size = new System.Drawing.Size(127, 24);
             this.btnRemoveSpace.TabIndex = 4;
             this.btnRemoveSpace.Text = "Retirer Espaces";
             this.btnRemoveSpace.UseVisualStyleBackColor = true;
             this.btnRemoveSpace.Click += new System.EventHandler(this.button_RemoveSpace);
             // 
-            // button2
+            // btnInvertChar
             // 
             this.btnInvertChar.Location = new System.Drawing.Point(18, 155);
-            this.btnInvertChar.Name = "button2";
+            this.btnInvertChar.Name = "btnInvertChar";
             this.btnInvertChar.Size = new System.Drawing.Size(127, 24);
             this.btnInvertChar.TabIndex = 5;
             this.btnInvertChar.Text = "Inverser Caractères";
             this.btnInvertChar.UseVisualStyleBackColor = true;
             this.btnInvertChar.Click += new System.EventHandler(this.button_InvertChar);
             // 
-            // button3
+            // btnDoubleChar
             // 
             this.btnDoubleChar.Location = new System.Drawing.Point(18, 185);
-            this.btnDoubleChar.Name = "button3";
+            this.btnDoubleChar.Name = "btnDoubleChar";
             this.btnDoubleChar.Size = new System.Drawing.Size(127, 24);
             this.btnDoubleChar.TabIndex = 6;
             this.btnDoubleChar.Text = "Doubler Caractères";
             this.btnDoubleChar.UseVisualStyleBackColor = true;
             this.btnDoubleChar.Click += new System.EventHandler(this.button_DoubleChar);
             // 
-            // button4
+            // btnSkipOneChar
             // 
             this.btnSkipOneChar.Location = new System.Drawing.Point(18, 215);
-            this.btnSkipOneChar.Name = "button4";
+            this.btnSkipOneChar.Name = "btnSkipOneChar";
             this.btnSkipOneChar.Size = new System.Drawing.Size(127, 24);
             this.btnSkipOneChar.TabIndex = 7;
             this.btnSkipOneChar.Text = "Sauter 1 Caractère";
             this.btnSkipOneChar.UseVisualStyleBackColor = true;
             this.btnSkipOneChar.Click += new System.EventHandler(this.button_SkipOneChar);
             // 
-            // button5
+            // btnUpperLower
             // 
             this.btnUpperLower.Location = new System.Drawing.Point(18, 245);
-            this.btnUpperLower.Name = "button5";
+            this.btnUpperLower.Name = "btnUpperLower";
             this.btnUpperLower.Size = new System.Drawing.Size(127, 24);
             this.btnUpperLower.TabIndex = 8;
             this.btnUpperLower.Text = "Maj-Min";
             this.btnUpperLower.UseVisualStyleBackColor = true;
             this.btnUpperLower.Click += new System.EventHandler(this.button_MajMin);
             // 
-            // button6
+            // btnPassword
             // 
             this.btnPassword.Location = new System.Drawing.Point(18, 275);
-            this.btnPassword.Name = "button6";
+            this.btnPassword.Name = "btnPassword";
             this.btnPassword.Size = new System.Drawing.Size(127, 24);
             this.btnPassword.TabIndex = 9;
             this.btnPassword.Text = "Mot De Passe";
             this.btnPassword.UseVisualStyleBackColor = true;
             this.btnPassword.Click += new System.EventHandler(this.button_Password);
             // 
-            // button7
+            // btnOnlyOneSpace
             // 
             this.btnOnlyOneSpace.Location = new System.Drawing.Point(184, 125);
-            this.btnOnlyOneSpace.Name = "button7";
+            this.btnOnlyOneSpace.Name = "btnOnlyOneSpace";
             this.btnOnlyOneSpace.Size = new System.Drawing.Size(127, 24);
             this.btnOnlyOneSpace.TabIndex = 10;
             this.btnOnlyOneSpace.Text = "1 Seul Espace";
             this.btnOnlyOneSpace.UseVisualStyleBackColor = true;
             this.btnOnlyOneSpace.Click += new System.EventHandler(this.button_OnlyOneSpace);
             // 
-            // button8
+            // btnInvertWord
             // 
             this.btnInvertWord.Location = new System.Drawing.Point(184, 155);
-            this.btnInvertWord.Name = "button8";
+            this.btnInvertWord.Name = "btnInvertWord";
             this.btnInvertWord.Size = new System.Drawing.Size(127, 24);
             this.btnInvertWord.TabIndex = 11;
             this.btnInvertWord.Text = "Inverse Mots";
             this.btnInvertWord.UseVisualStyleBackColor = true;
             this.btnInvertWord.Click += new System.EventHandler(this.button_InvertWord);
             // 
-            // button9
+            // btnCountWord
             // 
             this.btnCountWord.Location = new System.Drawing.Point(184, 185);
-            this.btnCountWord.Name = "button9";
+            this.btnCountWord.Name = "btnCountWord";
             this.btnCountWord.Size = new System.Drawing.Size(127, 24);
             this.btnCountWord.TabIndex = 12;
             this.btnCountWord.Text = "Compte Mots";
             this.btnCountWord.UseVisualStyleBackColor = true;
             this.btnCountWord.Click += new System.EventHandler(this.button_CountWord);
             // 
-            // button10
+            // btnRotate
             // 
             this.btnRotate.Location = new System.Drawing.Point(184, 215);
-            this.btnRotate.Name = "button10";
+            this.btnRotate.Name = "btnRotate";
             this.btnRotate.Size = new System.Drawing.Size(127, 24);
             this.btnRotate.TabIndex = 13;
             this.btnRotate.Text = "Rotation";
             this.btnRotate.UseVisualStyleBackColor = true;
             this.btnRotate.Click += new System.EventHandler(this.button_Rotate);
             // 
-            // button11
+            // btnConvertASCII
             // 
             this.btnConvertASCII.Location = new System.Drawing.Point(184, 245);
-            this.btnConvertASCII.Name = "button11";
+            this.btnConvertASCII.Name = "btnConvertASCII";
             this.btnConvertASCII.Size = new System.Drawing.Size(127, 24);
             this.btnConvertASCII.TabIndex = 14;
             this.btnConvertASCII.Text = "ASCII";
