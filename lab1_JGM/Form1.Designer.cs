@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLab1));
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.btnRotate = new System.Windows.Forms.Button();
             this.btnConvertASCII = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
+            this.tmr500ms = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // inputTextBox
@@ -202,6 +204,11 @@
             this.quitter.UseVisualStyleBackColor = true;
             this.quitter.Click += new System.EventHandler(this.quitter_Click);
             // 
+            // tmr500ms
+            // 
+            this.tmr500ms.Interval = 500;
+            this.tmr500ms.Tick += new System.EventHandler(this.tmr500ms_Tick);
+            // 
             // frmLab1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +256,7 @@
         private System.Windows.Forms.Button btnRotate;
         private System.Windows.Forms.Button btnConvertASCII;
         private System.Windows.Forms.Button quitter;
+        private System.Windows.Forms.Timer tmr500ms;
     }
 }
 
