@@ -55,7 +55,7 @@
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(293, 20);
             this.inputTextBox.TabIndex = 0;
-            this.inputTextBox.Text = "Hello One 2 3";
+            this.inputTextBox.Text = "- Quack Quack -";
             // 
             // label1
             // 
@@ -233,6 +233,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.inputTextBox);
             this.Name = "frmLab1";
+            this.Text = "Lab1 A2022 Jessy GM";
             this.ResumeLayout(false);
             this.PerformLayout();
 
