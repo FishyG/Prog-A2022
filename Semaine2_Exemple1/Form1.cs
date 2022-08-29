@@ -46,7 +46,6 @@ namespace Semaine2_Exemple1
             {
                 m_arrayTextBox[i].Text += chaine;
             }
-
         }
     }
 }
