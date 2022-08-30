@@ -242,13 +242,16 @@ namespace lab1_JGM
         {
             if(tmr500ms.Enabled)
             { 
-                btnRotate.Text = "Rotation";
+                btnRotate.Text = "Rotation";// Change le texte pour "Rotation"
                 tmr500ms.Enabled = false;   // Stop le timer de 500ms
             }
             else
             {
-                btnRotate.Text = "Stop Rotation";
-                tmr500ms.Enabled = true;    // Start le timer de 500ms
+                if (inputTextBox.Text.Length > 0)  // Si resultBox n'est pas vide
+                {
+                    btnRotate.Text = "Stop Rotation";// Change le texte pour "Stop Rotation"
+                    tmr500ms.Enabled = true;    // Start le timer de 500ms
+                }
             }
         }
 
@@ -287,21 +290,23 @@ namespace lab1_JGM
         /// <param name="e"></param>
         private void tmr500ms_Tick(object sender, EventArgs e)
         {
-            if (resultTextBox.Text.Length == 0) // Si resultBox est vide
+            if (resultTextBox.Text.Length <= 0) // Si resultBox est vide
             {
                 resultTextBox.Text = inputTextBox.Text; // Met le text de inputBox dans resultBox
-            }   
-
-            char[] character = resultTextBox.Text.ToCharArray();    // Conversion de la string en tableau de char
-            char temp = character[character.Length - 1];            // Varaible temporaire pour variable qui va être remplacé
-
-            for (int i = character.Length - 1; i > 0; i--)
-            {
-                character[i] = character[i-1];  // Déplace les caractères d'un espace vers la droite
             }
-            character[0] = temp;    // Met la valeur temporaire à gauche
+            else // Si resultBox n'est pas vide
+            {
+                char[] character = resultTextBox.Text.ToCharArray();    // Conversion de la string en tableau de char
+                char temp = character[character.Length - 1];            // Varaible temporaire pour variable qui va être remplacé
 
-            resultTextBox.Text = string.Join("",character);    // Conversion du tableau 
+                for (int i = character.Length - 1; i > 0; i--)
+                {
+                    character[i] = character[i - 1];  // Déplace les caractères d'un espace vers la droite
+                }
+                character[0] = temp;    // Met la valeur temporaire à gauche
+
+                resultTextBox.Text = string.Join("", character);    // Conversion du tableau 
+            }
         }
     }
 }
