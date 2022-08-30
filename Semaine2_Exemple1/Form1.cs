@@ -19,7 +19,7 @@ namespace Semaine2_Exemple1
         {
             InitializeComponent();
 
-            Control ctrlSuivant;  //déclaration d'un objet Control
+            Control ctrlSuivant;  // Déclaration d'un objet Control
             ctrlSuivant = panelTextBox;  // Le point de départ de la recherche sera le Pannel
 
             for (int i = 0; i < NB_TEXTBOX; i++)
