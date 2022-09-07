@@ -1,0 +1,9 @@
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\bin\Debug\DemoEncrypte.exe
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\bin\Debug\DemoEncrypte.pdb
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoClasse.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoClasseEncrypte.frmPrincipale.resources
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoClasseEncrypte.Properties.Resources.resources
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoClasse.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoClasse.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoEncrypte.exe
+C:\Users\Jessy\source\repos\DemoEncrypte_JGM\obj\Debug\DemoEncrypte.pdb

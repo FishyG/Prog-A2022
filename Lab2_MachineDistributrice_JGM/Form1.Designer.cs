@@ -207,7 +207,6 @@
             this.btn_0.Name = "btn_0";
             this.btn_0.Size = new System.Drawing.Size(56, 23);
             this.btn_0.TabIndex = 0;
-            this.btn_0.Text = "0";
             this.btn_0.UseVisualStyleBackColor = false;
             this.btn_0.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -233,7 +232,6 @@
             this.btn_9.Name = "btn_9";
             this.btn_9.Size = new System.Drawing.Size(56, 23);
             this.btn_9.TabIndex = 9;
-            this.btn_9.Text = "9";
             this.btn_9.UseVisualStyleBackColor = false;
             this.btn_9.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -247,7 +245,6 @@
             this.btn_8.Name = "btn_8";
             this.btn_8.Size = new System.Drawing.Size(56, 23);
             this.btn_8.TabIndex = 8;
-            this.btn_8.Text = "8";
             this.btn_8.UseVisualStyleBackColor = false;
             this.btn_8.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -261,7 +258,6 @@
             this.btn_7.Name = "btn_7";
             this.btn_7.Size = new System.Drawing.Size(56, 23);
             this.btn_7.TabIndex = 7;
-            this.btn_7.Text = "7";
             this.btn_7.UseVisualStyleBackColor = false;
             this.btn_7.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -275,7 +271,6 @@
             this.btn_6.Name = "btn_6";
             this.btn_6.Size = new System.Drawing.Size(56, 23);
             this.btn_6.TabIndex = 6;
-            this.btn_6.Text = "6";
             this.btn_6.UseVisualStyleBackColor = false;
             this.btn_6.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -289,7 +284,6 @@
             this.btn_5.Name = "btn_5";
             this.btn_5.Size = new System.Drawing.Size(56, 23);
             this.btn_5.TabIndex = 5;
-            this.btn_5.Text = "5";
             this.btn_5.UseVisualStyleBackColor = false;
             this.btn_5.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -303,7 +297,6 @@
             this.btn_4.Name = "btn_4";
             this.btn_4.Size = new System.Drawing.Size(56, 23);
             this.btn_4.TabIndex = 4;
-            this.btn_4.Text = "D";
             this.btn_4.UseVisualStyleBackColor = false;
             this.btn_4.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -317,7 +310,6 @@
             this.btn_3.Name = "btn_3";
             this.btn_3.Size = new System.Drawing.Size(56, 23);
             this.btn_3.TabIndex = 3;
-            this.btn_3.Text = "C";
             this.btn_3.UseVisualStyleBackColor = false;
             this.btn_3.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -331,7 +323,6 @@
             this.btn_2.Name = "btn_2";
             this.btn_2.Size = new System.Drawing.Size(56, 23);
             this.btn_2.TabIndex = 2;
-            this.btn_2.Text = "B";
             this.btn_2.UseVisualStyleBackColor = false;
             this.btn_2.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
@@ -345,7 +336,6 @@
             this.btn_1.Name = "btn_1";
             this.btn_1.Size = new System.Drawing.Size(56, 23);
             this.btn_1.TabIndex = 1;
-            this.btn_1.Text = "A";
             this.btn_1.UseVisualStyleBackColor = false;
             this.btn_1.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 

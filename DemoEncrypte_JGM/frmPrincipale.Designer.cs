@@ -77,6 +77,7 @@
             this.codeText.Name = "codeText";
             this.codeText.Size = new System.Drawing.Size(29, 20);
             this.codeText.TabIndex = 4;
+            this.codeText.Text = "1";
             // 
             // label3
             // 
@@ -97,6 +98,7 @@
             this.okButton.TabIndex = 6;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // frmPrincipale
             // 

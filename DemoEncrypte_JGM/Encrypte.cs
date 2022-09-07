@@ -27,13 +27,10 @@ namespace DemoClasseEncrypte
             m_codeEncryption = code;		    
         }
 
-
-
         public void fixeEncryptage(int code)
         {
             m_codeEncryption = code;    // Fixer la valeur de l'encryptage
         }
-
 
         public void setChaine(string chaine)
         {
@@ -51,7 +48,5 @@ namespace DemoClasseEncrypte
         {
             return m_chaineTravail;
         }
-
-        
     }
 }
