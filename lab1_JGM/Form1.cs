@@ -1,9 +1,21 @@
 ﻿/**
  * @file   form1.cs
- * @author A.Bernier
+ * @author Jessy Grimard-Maheu
  * @date   8/28/2022
- * @brief  LaboChaines pour le cours 247-516-SH-A22. Le but de ce laboratoire est de ce familiariser avec les types string (chaine de caractère)
- * 
+ * @brief  LaboChaines(lab1) pour le cours 247-516-SH-A22.
+ * Le but de ce laboratoire est de se familiariser avec les types string (chaine de caractère).
+ * Le programme contient 12 boutons ayant tous des actions différentes; 
+ * - Retire Espaces ; Efface les espaces dans la string
+ * - Inverse Caractère ; Inverse les caractère de la string
+ * - Doubler Caractère ; Double les caractère de la string
+ * - Sauter 1 Caractère ; Saute 1 caractère sur 2
+ * - Maj-Min ; Alternation entre un caractère majuscule et minuscule
+ * - Mot de Passe ; Vérifie si la string est un mot de passe valide
+ * - 1 Seul Espace ; Garde une seule espace entre chaque mots
+ * - Inverse Mots ; Inverse les mots de la string
+ * - Compte Mots ; Compte le nombre de mots dans la string
+ * - Rotation ; Rotation de la string
+ * - ASCII ; Conversion de la string avec le code ASCII
  *
  * @version 1.0 : Première version
  * Environnement de développement: Visual Studio 2022
@@ -186,7 +198,7 @@ namespace lab1_JGM
             foreach (char c in inputTextBox.Text.Trim()) // Pour chaque caractères de la string (trim() efface les espaces à la fin et au début)
             {
                 if (oldC == ' ' && c == ' ')
-                { } // Ne copie pas si il y a deux espaces collé
+                    ;   // Ne copie pas si il y a deux espaces collé
                 else
                     resultTextBox.Text = resultTextBox.Text + c.ToString(); // Copie le caractère s'il n'est pas un double espace (' ')
                 oldC = c;
@@ -269,19 +281,6 @@ namespace lab1_JGM
                 resultTextBox.Text = resultTextBox.Text + Convert.ToString(Convert.ToUInt64(c)) + " ";  // Convertie la variable char en l'équivalent sur le tableau ascii (ex: A = 65) puis convertie le nombre en string afin de pouvoir l'afficher
             }
         }
-        
-        /// <summary>
-        /// Permet de quitter l'application
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void quitter_Click(object sender, EventArgs e)
-        {
-            SoundPlayer quack = new SoundPlayer(lab1_JGM.Properties.Resources.DuckQuack);   // Charge le fichier audio pour pouvoir le jouer
-            quack.Play();   // Quack
-            Thread.Sleep(500);  // Délais de 500ms pour permettre de jouer l'audio
-            Application.Exit(); // Quitter l'application
-        }
 
         /// <summary>
         /// Timer de 500ms pour la fonction rotate.
@@ -307,6 +306,19 @@ namespace lab1_JGM
 
                 resultTextBox.Text = string.Join("", character);    // Conversion du tableau 
             }
+        }
+
+        /// <summary>
+        /// Permet de quitter l'application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void quitter_Click(object sender, EventArgs e)
+        {
+            SoundPlayer quack = new SoundPlayer(lab1_JGM.Properties.Resources.DuckQuack);   // Charge le fichier audio pour pouvoir le jouer
+            quack.Play();   // Quack
+            Thread.Sleep(500);  // Délais de 500ms pour permettre de jouer l'audio
+            Application.Exit(); // Quitter l'application
         }
     }
 }

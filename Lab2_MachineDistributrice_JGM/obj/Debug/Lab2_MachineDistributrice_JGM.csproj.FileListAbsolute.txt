@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\bin\Debug\Lab2_MachineDistributrice_JGM.exe.config
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\bin\Debug\Lab2_MachineDistributrice_JGM.exe
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\bin\Debug\Lab2_MachineDistributrice_JGM.pdb
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.Form1.resources
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.Properties.Resources.resources
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.exe
+C:\Users\Jessy\source\repos\Lab2_MachineDistributrice_JGM\obj\Debug\Lab2_MachineDistributrice_JGM.pdb

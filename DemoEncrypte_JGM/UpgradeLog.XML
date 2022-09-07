@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="NouvelleClasse">
+</Property><Property Name="Fichier solution" Value="I:\Cours\247-516-SH (Prog. Avancee Sys. Emb)\Demo\NouvelleClasse\NouvelleClasse.sln">
+</Property><Property Name="Date" Value="25 septembre 2012">
+</Property><Property Name="Time" Value="14:17">
+</Property></Properties><Event ErrorLevel="0" Project="NouvelleClasse" Source="NouvelleClasse.csproj" Description="Projet correctement converti">
+</Event><Event ErrorLevel="3" Project="NouvelleClasse" Source="NouvelleClasse.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="NouvelleClasse.sln" Description="Solution correctement convertie">
+</Event><Event ErrorLevel="3" Project="" Source="NouvelleClasse.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="NouvelleClasse" Source="NouvelleClasse.csproj" Description="Analyse terminée : la mise à niveau n'est pas requise pour les fichiers projet.">
+</Event></UpgradeLog>
