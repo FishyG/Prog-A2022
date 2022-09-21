@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\bin\Debug\ClasseResistance.exe.config
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\bin\Debug\ClasseResistance.exe
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\bin\Debug\ClasseResistance.pdb
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.Form1.resources
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.Properties.Resources.resources
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.exe
+C:\Users\Jessy\source\repos\ClasseResistance_JGM\ClasseResistance\obj\Debug\ClasseResistance.pdb
