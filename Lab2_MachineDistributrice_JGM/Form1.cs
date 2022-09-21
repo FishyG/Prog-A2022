@@ -133,8 +133,6 @@ namespace Lab2_MachineDistributrice_JGM
             m_credit += Convert.ToInt32(temporaire);// Ajout du nombre de crédits
 
             Affiche();
-            /* TO REMOVE */
-            label1.Text = m_credit.ToString();  // TO REMOVE
         }
 
         private void SetClavierState(bool state)
@@ -246,8 +244,32 @@ namespace Lab2_MachineDistributrice_JGM
 
         private void btn_Modif_Click(object sender, EventArgs e)
         {
-            if (!(m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].modifierInventaire(Convert.ToInt32(tb_Price.Text), Convert.ToInt32(tb_Quantity.Text))))
-                MessageBox.Show("Prix ou quantité invalide");
+            bool error = false;
+            if (cb_Colonne.Text[0] < '0' && cb_Colonne.Text[0] > '9' && cb_Colonne.Text.Length > 1)
+            {
+                MessageBox.Show("Colonne invalide");
+                error = false;
+            }
+            else
+            {
+                cb_Colonne.SelectedIndex = (cb_Colonne.Text[0] - '0');
+                error = true;
+            }
+
+            if ((cb_Rangee.Text[0] < 'A' && cb_Rangee.Text[0] > ('A' + NBRANGEE-1)) && cb_Rangee.Text.Length > 1 && error)
+            {
+                MessageBox.Show("Rangée invalide");
+                error = false;
+            }
+            else
+            {
+                cb_Rangee.SelectedIndex = (cb_Rangee.Text[0] - 'A');
+                error = true;
+            }
+
+            if(error)
+                if (!(m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].modifierInventaire(Convert.ToInt32(tb_Price.Text), Convert.ToInt32(tb_Quantity.Text))))
+                    MessageBox.Show("Prix ou quantité invalide");
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
