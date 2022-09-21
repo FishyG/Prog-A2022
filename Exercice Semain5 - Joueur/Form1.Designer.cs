@@ -39,7 +39,7 @@
             // 
             this.gbTeamA.Location = new System.Drawing.Point(12, 12);
             this.gbTeamA.Name = "gbTeamA";
-            this.gbTeamA.Size = new System.Drawing.Size(200, 100);
+            this.gbTeamA.Size = new System.Drawing.Size(200, 126);
             this.gbTeamA.TabIndex = 0;
             this.gbTeamA.TabStop = false;
             this.gbTeamA.Text = "Équipe A";
@@ -48,7 +48,7 @@
             // 
             this.gbTeamB.Location = new System.Drawing.Point(299, 12);
             this.gbTeamB.Name = "gbTeamB";
-            this.gbTeamB.Size = new System.Drawing.Size(200, 100);
+            this.gbTeamB.Size = new System.Drawing.Size(200, 126);
             this.gbTeamB.TabIndex = 1;
             this.gbTeamB.TabStop = false;
             this.gbTeamB.Text = "Équipe B";
@@ -70,13 +70,14 @@
             this.btnFight.TabIndex = 3;
             this.btnFight.Text = "FIGHT !!!";
             this.btnFight.UseVisualStyleBackColor = true;
+            this.btnFight.Click += new System.EventHandler(this.btnFight_Click);
             // 
             // lbResult
             // 
             this.lbResult.FormattingEnabled = true;
-            this.lbResult.Location = new System.Drawing.Point(198, 118);
+            this.lbResult.Location = new System.Drawing.Point(185, 144);
             this.lbResult.Name = "lbResult";
-            this.lbResult.Size = new System.Drawing.Size(120, 95);
+            this.lbResult.Size = new System.Drawing.Size(142, 69);
             this.lbResult.TabIndex = 4;
             // 
             // Form1

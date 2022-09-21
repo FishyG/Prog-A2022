@@ -25,6 +25,7 @@ namespace Exercice_Semain5___Joueur
             {
                 force += c;
             }
+            force = force & 0xFF;
             return force;
         }
     }
