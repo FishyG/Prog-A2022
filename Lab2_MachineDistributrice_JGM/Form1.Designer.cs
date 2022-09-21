@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelCredit = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -36,9 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panelClavier = new System.Windows.Forms.Panel();
-            this.button17 = new System.Windows.Forms.Button();
+            this.btn_Enter = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_9 = new System.Windows.Forms.Button();
             this.btn_8 = new System.Windows.Forms.Button();
             this.btn_7 = new System.Windows.Forms.Button();
@@ -51,17 +52,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lb_Affichage = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button18 = new System.Windows.Forms.Button();
+            this.tb_Quantity = new System.Windows.Forms.TextBox();
+            this.tb_Price = new System.Windows.Forms.TextBox();
+            this.btn_Modif = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cb_Colonne = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_Rangee = new System.Windows.Forms.ComboBox();
+            this.tmr_1Sec = new System.Windows.Forms.Timer(this.components);
             this.panelCredit.SuspendLayout();
             this.panelClavier.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -167,9 +169,9 @@
             // panelClavier
             // 
             this.panelClavier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panelClavier.Controls.Add(this.button17);
+            this.panelClavier.Controls.Add(this.btn_Enter);
             this.panelClavier.Controls.Add(this.btn_0);
-            this.panelClavier.Controls.Add(this.button15);
+            this.panelClavier.Controls.Add(this.btn_Clear);
             this.panelClavier.Controls.Add(this.btn_9);
             this.panelClavier.Controls.Add(this.btn_8);
             this.panelClavier.Controls.Add(this.btn_7);
@@ -185,17 +187,18 @@
             this.panelClavier.Size = new System.Drawing.Size(200, 176);
             this.panelClavier.TabIndex = 1;
             // 
-            // button17
+            // btn_Enter
             // 
-            this.button17.BackColor = System.Drawing.Color.DimGray;
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button17.Location = new System.Drawing.Point(130, 123);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(56, 23);
-            this.button17.TabIndex = 11;
-            this.button17.Text = "Enter";
-            this.button17.UseVisualStyleBackColor = false;
+            this.btn_Enter.BackColor = System.Drawing.Color.DimGray;
+            this.btn_Enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Enter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_Enter.Location = new System.Drawing.Point(130, 123);
+            this.btn_Enter.Name = "btn_Enter";
+            this.btn_Enter.Size = new System.Drawing.Size(56, 23);
+            this.btn_Enter.TabIndex = 11;
+            this.btn_Enter.Text = "Enter";
+            this.btn_Enter.UseVisualStyleBackColor = false;
+            this.btn_Enter.Click += new System.EventHandler(this.btn_Enter_Click);
             // 
             // btn_0
             // 
@@ -210,17 +213,18 @@
             this.btn_0.UseVisualStyleBackColor = false;
             this.btn_0.Click += new System.EventHandler(this.ClavierABC123_Click);
             // 
-            // button15
+            // btn_Clear
             // 
-            this.button15.BackColor = System.Drawing.Color.DimGray;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button15.Location = new System.Drawing.Point(6, 123);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(56, 23);
-            this.button15.TabIndex = 10;
-            this.button15.Text = "Clear";
-            this.button15.UseVisualStyleBackColor = false;
+            this.btn_Clear.BackColor = System.Drawing.Color.DimGray;
+            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Clear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_Clear.Location = new System.Drawing.Point(6, 123);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(56, 23);
+            this.btn_Clear.TabIndex = 10;
+            this.btn_Clear.Text = "Clear";
+            this.btn_Clear.UseVisualStyleBackColor = false;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_9
             // 
@@ -359,11 +363,12 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(461, 367);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged_1);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage1.Controls.Add(this.listBox1);
+            this.tabPage1.Controls.Add(this.lb_Affichage);
             this.tabPage1.Controls.Add(this.panelClavier);
             this.tabPage1.Controls.Add(this.panelCredit);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -373,26 +378,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Achat";
             // 
-            // listBox1
+            // lb_Affichage
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(14, 17);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(417, 108);
-            this.listBox1.TabIndex = 2;
+            this.lb_Affichage.FormattingEnabled = true;
+            this.lb_Affichage.Location = new System.Drawing.Point(14, 17);
+            this.lb_Affichage.Name = "lb_Affichage";
+            this.lb_Affichage.Size = new System.Drawing.Size(417, 108);
+            this.lb_Affichage.TabIndex = 2;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.button18);
+            this.tabPage2.Controls.Add(this.tb_Quantity);
+            this.tabPage2.Controls.Add(this.tb_Price);
+            this.tabPage2.Controls.Add(this.btn_Modif);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.cb_Colonne);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.cb_Rangee);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -400,29 +405,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Inventaire";
             // 
-            // textBox2
+            // tb_Quantity
             // 
-            this.textBox2.Location = new System.Drawing.Point(296, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 10;
+            this.tb_Quantity.Location = new System.Drawing.Point(296, 76);
+            this.tb_Quantity.Name = "tb_Quantity";
+            this.tb_Quantity.Size = new System.Drawing.Size(121, 20);
+            this.tb_Quantity.TabIndex = 10;
             // 
-            // textBox1
+            // tb_Price
             // 
-            this.textBox1.Location = new System.Drawing.Point(296, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 9;
+            this.tb_Price.Location = new System.Drawing.Point(296, 50);
+            this.tb_Price.Name = "tb_Price";
+            this.tb_Price.Size = new System.Drawing.Size(121, 20);
+            this.tb_Price.TabIndex = 9;
             // 
-            // button18
+            // btn_Modif
             // 
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(274, 102);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(143, 23);
-            this.button18.TabIndex = 8;
-            this.button18.Text = "Modifier inventaire";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btn_Modif.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Modif.Location = new System.Drawing.Point(274, 102);
+            this.btn_Modif.Name = "btn_Modif";
+            this.btn_Modif.Size = new System.Drawing.Size(143, 23);
+            this.btn_Modif.TabIndex = 8;
+            this.btn_Modif.Text = "Modifier inventaire";
+            this.btn_Modif.UseVisualStyleBackColor = true;
+            this.btn_Modif.Click += new System.EventHandler(this.btn_Modif_Click);
             // 
             // label6
             // 
@@ -457,15 +463,29 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Colonne";
             // 
-            // comboBox2
+            // cb_Colonne
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.Gray;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(72, 75);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 2;
+            this.cb_Colonne.BackColor = System.Drawing.Color.Gray;
+            this.cb_Colonne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_Colonne.FormattingEnabled = true;
+            this.cb_Colonne.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
+            this.cb_Colonne.Location = new System.Drawing.Point(72, 75);
+            this.cb_Colonne.Name = "cb_Colonne";
+            this.cb_Colonne.Size = new System.Drawing.Size(121, 21);
+            this.cb_Colonne.TabIndex = 2;
+            this.cb_Colonne.SelectedIndex = 0;
+            this.cb_Colonne.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
+            
             // 
             // label3
             // 
@@ -478,15 +498,29 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Rangée";
             // 
-            // comboBox1
+            // cb_Rangee
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.Gray;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(72, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cb_Rangee.BackColor = System.Drawing.Color.Gray;
+            this.cb_Rangee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_Rangee.FormattingEnabled = true;
+            this.cb_Rangee.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"});
+            this.cb_Rangee.Location = new System.Drawing.Point(72, 48);
+            this.cb_Rangee.Name = "cb_Rangee";
+            this.cb_Rangee.Size = new System.Drawing.Size(121, 21);
+            this.cb_Rangee.TabIndex = 0;
+            this.cb_Rangee.SelectedIndex = 0;
+            this.cb_Rangee.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
+            // 
+            // tmr_1Sec
+            // 
+            this.tmr_1Sec.Interval = 1000;
+            this.tmr_1Sec.Tick += new System.EventHandler(this.tmr_1Sec_Tick_1);
             // 
             // Form1
             // 
@@ -520,9 +554,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button btn_Enter;
         private System.Windows.Forms.Button btn_0;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.Button btn_9;
         private System.Windows.Forms.Button btn_8;
         private System.Windows.Forms.Button btn_7;
@@ -536,15 +570,16 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.ComboBox cb_Rangee;
+        private System.Windows.Forms.TextBox tb_Quantity;
+        private System.Windows.Forms.TextBox tb_Price;
+        private System.Windows.Forms.Button btn_Modif;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox cb_Colonne;
+        private System.Windows.Forms.ListBox lb_Affichage;
+        private System.Windows.Forms.Timer tmr_1Sec;
     }
 }
 

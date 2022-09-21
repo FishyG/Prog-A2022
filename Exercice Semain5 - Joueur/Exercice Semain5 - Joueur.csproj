@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D98239E-E1E6-4AEA-97B7-B13F772A6F68}</ProjectGuid>
+    <ProjectGuid>{C04B2C08-DA9E-4533-8059-203FF843BBBE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Lab2_MachineDistributrice_JGM</RootNamespace>
-    <AssemblyName>Lab2_MachineDistributrice_JGM</AssemblyName>
+    <RootNamespace>Exercice_Semain5___Joueur</RootNamespace>
+    <AssemblyName>Exercice Semain5 - Joueur</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,15 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemInventaire.cs" />
-    <Compile Include="Lcd4Lignes.cs" />
+    <Compile Include="Joueur.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

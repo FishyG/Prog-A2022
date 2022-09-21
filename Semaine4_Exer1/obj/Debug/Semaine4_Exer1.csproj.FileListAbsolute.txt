@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\Semaine4_Exer1\bin\Debug\Semaine4_Exer1.exe.config
+C:\Users\Jessy\source\repos\Semaine4_Exer1\bin\Debug\Semaine4_Exer1.exe
+C:\Users\Jessy\source\repos\Semaine4_Exer1\bin\Debug\Semaine4_Exer1.pdb
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.Form1.resources
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.Properties.Resources.resources
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.exe
+C:\Users\Jessy\source\repos\Semaine4_Exer1\obj\Debug\Semaine4_Exer1.pdb

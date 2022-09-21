@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\bin\Debug\Exercice Semain5 - Joueur.exe.config
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\bin\Debug\Exercice Semain5 - Joueur.exe
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\bin\Debug\Exercice Semain5 - Joueur.pdb
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice Semain5 - Joueur.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice Semain5 - Joueur.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice_Semain5___Joueur.Form1.resources
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice_Semain5___Joueur.Properties.Resources.resources
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice Semain5 - Joueur.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice Semain5 - Joueur.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice Semain5 - Joueur.exe
+C:\Users\Jessy\source\repos\Exercice Semain5 - Joueur\obj\Debug\Exercice Semain5 - Joueur.pdb
