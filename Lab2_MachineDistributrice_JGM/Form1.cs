@@ -39,15 +39,15 @@ namespace Lab2_MachineDistributrice_JGM
             Control ctrlSuivant;  // Déclaration d'un objet Control
             Random rand = new Random(); // Création de l'objet rand pour avoir des valeurs aléatoires (Prix)
             int prixTemp = 0;   // Variable contenant le prix de l'item (de facon temporaire
-            m_objAffichage = new Lcd4Lignes();  // Insranciation de 
+            m_objAffichage = new Lcd4Lignes();  // Instanciation de m_objAffichage
             InitializeComponent();
             
             for (int i = 0; i < NBRANGEE; i++)
             {
                 for (int j = 0; j < NBCOLONNE; j++)
                 {
-                    prixTemp = rand.Next(1,60) * 5;
-                    m_tabInventaire[i, j] = new ItemInventaire(prixTemp, 2);
+                    prixTemp = rand.Next(1,60) * 5; // Pour avoir un prix entre 5 et 300 cents
+                    m_tabInventaire[i, j] = new ItemInventaire(prixTemp, 2);    // Ajout de l'item avec une quantié de 2 et un prix aléatoire
                 }
             }
 
@@ -58,20 +58,23 @@ namespace Lab2_MachineDistributrice_JGM
                 m_Clavier[i] = (Button)ctrlSuivant; //casting de l'objet Control trouvé (ctrlSuivant) en TextBox
             }
 
-            cb_Rangee.Text = "A";
-            cb_Colonne.Text = "0";
-            cb_Rangee.SelectedIndex = 0; 
-            cb_Colonne.SelectedIndex = 0;
-            tb_Price.Text = m_tabInventaire[0, 0].prix.ToString();
+            cb_Rangee.Text = "A";   // Met le texte de la combo box de la rangée à A
+            cb_Colonne.Text = "0";  // Met le texte de la combo box de la colonne à 0
+            cb_Rangee.SelectedIndex = 0;    // Met l'index de la combo box à 0
+            cb_Colonne.SelectedIndex = 0;   // Met l'index de la combo box à 0
+            tb_Price.Text = m_tabInventaire[0, 0].prix.ToString();  
             tb_Quantity.Text = m_tabInventaire[0, 0].quantite.ToString();
-            Affiche();
-            SetClavierLettre();
+            Affiche(); 
+            SetClavierLettre(); // Met le clavier en mode lettre
         }
 
-
+        /// <summary>
+        /// Fonction servant à gérer les clicks des boutons du clavier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClavierABC123_Click(object sender, EventArgs e)
         {
-            
             Button bouton = (Button)sender; // Casting du sender en Button
 
             if (char.IsNumber(bouton.Text[0]))  // Si le premier caractère du button est un nombre
@@ -80,8 +83,8 @@ namespace Lab2_MachineDistributrice_JGM
                 m_prixCourant = m_tabInventaire[m_indexRangee, m_indexColonne].prix;
                 if (m_tabInventaire[m_indexRangee, m_indexColonne].quantite == 0)
                 {
-                    m_qteZero = true;
-                    tmr_1Sec.Enabled = true;
+                    m_qteZero = true;   // Met la quantité restante à 0
+                    tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
                 }
 
                 SetClavierState(false); // Barre le clavier
@@ -89,7 +92,7 @@ namespace Lab2_MachineDistributrice_JGM
             else
             {
                 m_indexRangee = bouton.Text[0] - 'A';
-                SetClavierChiffres();
+                SetClavierChiffres();   // Met le clavier en mode chiffres
             }
             Affiche();
         }
@@ -100,8 +103,8 @@ namespace Lab2_MachineDistributrice_JGM
             m_indexColonne = 255;
             m_annulationVente = true;
             m_retourCredit = m_credit;
-            tmr_1Sec.Enabled = true;
-            SetClavierState(false);
+            tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
+            SetClavierState(false); // Barre le clavier
             Affiche();
         }
 
@@ -112,13 +115,13 @@ namespace Lab2_MachineDistributrice_JGM
                 if(m_credit < m_prixCourant)
                 {
                     m_manqueCredit = true;
-                    tmr_1Sec.Enabled = true;
+                    tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
                 }
                 else
                 {
                     m_distributionActive = true;
                     m_retourCredit = m_credit - m_prixCourant;
-                    tmr_1Sec.Enabled = true;
+                    tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
                 }
             }
             Affiche();
@@ -181,106 +184,88 @@ namespace Lab2_MachineDistributrice_JGM
 
         private void tmr_1Sec_Tick_1(object sender, EventArgs e)
         {
-            tmr_1Sec.Enabled = false;
-            
+            tmr_1Sec.Enabled = false;   // Désactivation du timer de 1 seconde
 
-            if (m_manqueCredit)
+
+            if (m_manqueCredit) // Si il manque du crédit
             {
-                m_manqueCredit = false;
+                m_manqueCredit = false; // Remet à false
             }
             else if (m_annulationVente)
             {
                 m_credit = 0;
                 m_annulationVente = false;
-                m_prixCourant = 0;
-                m_retourCredit = 0;
-                m_indexRangee = 255;
-                m_indexColonne = 255;
-                SetClavierState(true);
-                SetClavierLettre();
+                m_prixCourant = 0;  // Remet le prix courant à 0
+                m_retourCredit = 0; // Remet le retour de crédit à 0
+                m_indexRangee = 255;    // Change l'index pour une valeur impossible
+                m_indexColonne = 255;   // Change l'index pour une valeur impossible
+                SetClavierState(true);  // Unlock le clavier
+                SetClavierLettre(); // Met le clavien en mode lettre
             }
             else if (m_qteZero)
             {
                 m_qteZero = false;
-                m_indexRangee = 255;
-                m_indexColonne = 255;
-                SetClavierState(true);
-                SetClavierLettre();
+                m_indexRangee = 255;    // Change l'index pour une valeur impossible
+                m_indexColonne = 255;   // Change l'index pour une valeur impossible
+                SetClavierState(true);  // Unlock le clavier
+                SetClavierLettre(); // Met le clavien en mode lettre
             }
-            else if (m_manqueCredit)
+            else if (m_distributionActive)  // Si la machine doit distribué l'item
             {
-                m_distributionActive = false;
-                m_credit = 0;
-                m_retourCredit = 0;
-                m_prixCourant = 0;
-                m_tabInventaire[m_indexRangee, m_indexColonne].diminuerInventaire();
-                m_indexRangee = 255;
-                m_indexColonne = 255;
-                SetClavierState(true);
-                SetClavierLettre();
-            }
-            else if (m_distributionActive)
-            {
-                m_distributionActive = false;
-                m_credit = 0;
-                m_retourCredit = 0;
-                m_prixCourant = 0;
-                m_tabInventaire[m_indexRangee, m_indexColonne].diminuerInventaire();
-                m_indexRangee = 255;
-                m_indexColonne = 255;
-                SetClavierState(true);
-                SetClavierLettre();
+                m_distributionActive = false;   // Remet la distribution à false
+                m_credit = 0;       // Remet le crédit à 0
+                m_retourCredit = 0; // Remet le retour de crédit à 0
+                m_prixCourant = 0;  // Remet le prix courant à 0
+                m_tabInventaire[m_indexRangee, m_indexColonne].diminuerInventaire();    // Diminution de l'inventaire
+                m_indexRangee = 255;    // Change l'index pour une valeur impossible
+                m_indexColonne = 255;   // Change l'index pour une valeur impossible
+                SetClavierState(true);  // Unlock le clavier
+                SetClavierLettre(); // Met le clavien en mode lettre
             }
             Affiche();
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int price = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].prix;
-            int quantity = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].quantite;
-            tb_Price.Text = price.ToString();
-            tb_Quantity.Text = quantity.ToString();
-        }
-
+        /// <summary>
+        /// Lorsque le bouton pour la modification de l'inventaire est appuyé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Modif_Click(object sender, EventArgs e)
         {
-            bool error = false;
-            if (cb_Colonne.Text[0] < '0' && cb_Colonne.Text[0] > '9' && cb_Colonne.Text.Length > 1)
+            bool error = true;
+            if (cb_Colonne.Text[0] < '0' && cb_Colonne.Text[0] > ('0' + NBCOLONNE-1) && cb_Colonne.Text.Length > 1) // Si la valeur est entre '0' et le nombre de rangées de colonne (ici '9')
             {
-                MessageBox.Show("Colonne invalide");
-                error = false;
+                MessageBox.Show("Colonne invalide");    // Affiche un message d'erreur
+                error = true;   // Une erreur à été détecté
             }
             else
             {
-                cb_Colonne.SelectedIndex = (cb_Colonne.Text[0] - '0');
-                error = true;
+                cb_Colonne.SelectedIndex = (cb_Colonne.Text[0] - '0');  // Met l'index séléectionné de la colonne à la valeur spécifé
+                error = false;  // Pas d'erreur
             }
 
-            if ((cb_Rangee.Text[0] < 'A' && cb_Rangee.Text[0] > ('A' + NBRANGEE-1)) && cb_Rangee.Text.Length > 1 && error)
+            if ((cb_Rangee.Text[0] < 'A' && cb_Rangee.Text[0] > ('A' + NBRANGEE-1)) && cb_Rangee.Text.Length > 1 && !error) // Si la valeur est entre 'A' et la lettre du nombre de rangées maximale (ici 'F')
             {
-                MessageBox.Show("Rangée invalide");
-                error = false;
+                MessageBox.Show("Rangée invalide"); // Affiche un message d'erreur
+                error = true;   // Une erreur à été détecté
             }
             else
             {
-                cb_Rangee.SelectedIndex = (cb_Rangee.Text[0] - 'A');
-                error = true;
+                cb_Rangee.SelectedIndex = (cb_Rangee.Text[0] - 'A');    // Met l'index séléectionné de la rangée à la valeur spécifé
+                error = false;  // Pas d'erreur
             }
 
-            if(error)
+            if(!error)  // Si il n'y a pas d'erreur
                 if (!(m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].modifierInventaire(Convert.ToInt32(tb_Price.Text), Convert.ToInt32(tb_Quantity.Text))))
-                    MessageBox.Show("Prix ou quantité invalide");
+                    MessageBox.Show("Prix ou quantité invalide");   // Affiche un message d'erreur si l'opération est invalide
         }
 
+        /// <summary>
+        /// Fonction servant à changer le contenu des textbox lorsque l'on change de pages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int price = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].prix;
-            int quantity = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].quantite;
-            tb_Price.Text = price.ToString();
-            tb_Quantity.Text = quantity.ToString();
-        }
-
-        private void tabControl1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             int price = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].prix;
             int quantity = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].quantite;
