@@ -483,9 +483,7 @@
             this.cb_Colonne.Name = "cb_Colonne";
             this.cb_Colonne.Size = new System.Drawing.Size(121, 21);
             this.cb_Colonne.TabIndex = 2;
-            this.cb_Colonne.SelectedIndex = 0;
             this.cb_Colonne.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
-            
             // 
             // label3
             // 
@@ -514,7 +512,6 @@
             this.cb_Rangee.Name = "cb_Rangee";
             this.cb_Rangee.Size = new System.Drawing.Size(121, 21);
             this.cb_Rangee.TabIndex = 0;
-            this.cb_Rangee.SelectedIndex = 0;
             this.cb_Rangee.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // tmr_1Sec
@@ -530,7 +527,7 @@
             this.ClientSize = new System.Drawing.Size(461, 366);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Machine Distributrice";
             this.panelCredit.ResumeLayout(false);
             this.panelCredit.PerformLayout();
             this.panelClavier.ResumeLayout(false);

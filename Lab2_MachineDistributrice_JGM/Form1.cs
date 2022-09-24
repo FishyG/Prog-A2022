@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*
+ * @file   Form1.cs
+ * @author Jessy Grimard-Maheu
+ * @date   9/20/2022
+ * @brief  LaboMachineDist(lab2) pour le cours 247-516-SH-A22.
+ * Le but de ce laboratoire est de concevoir une machine distributrice.
+ * La machine distributrice possède un système d'inventaire, il est alors impossible de faire l'achat de cet article
+ * une fois que la quantité de celui-ci est à 0. La machine distributrice possède également un moyen de modifier l'inventaire
+ * en modifiant le prix et la quantité des articles. Il est possible d'ajouter des crédits afin de faire l'achat des articles. Si
+ * les crédits sont insuffisants, la machine affiche un message d'erreur à l'usager en lui indiquant combien de crédits il 
+ * doit rajouter. Si l'usager à ajouter trop de crédits pour l'article choisit, la machine distributrice va lui remettre les 
+ * crédits en trop. Le choix de l'article se fait en choisissant une colonne et une rangée.
+ *
+ * @version 1.0 : Première version
+ * Environnement de développement: Visual Studio 2022
+ * Matériel: N/A
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,7 +82,7 @@ namespace Lab2_MachineDistributrice_JGM
             cb_Colonne.SelectedIndex = 0;   // Met l'index de la combo box à 0
             tb_Price.Text = m_tabInventaire[0, 0].prix.ToString();  
             tb_Quantity.Text = m_tabInventaire[0, 0].quantite.ToString();
-            Affiche(); 
+            Affiche();  // Refresh l'affichage
             SetClavierLettre(); // Met le clavier en mode lettre
         }
 
@@ -79,9 +97,9 @@ namespace Lab2_MachineDistributrice_JGM
 
             if (char.IsNumber(bouton.Text[0]))  // Si le premier caractère du button est un nombre
             {
-                m_indexColonne = bouton.Text[0] - '0';
+                m_indexColonne = bouton.Text[0] - '0';  // Récupère le numéro de l'index en fonction de la valeur ASCII
                 m_prixCourant = m_tabInventaire[m_indexRangee, m_indexColonne].prix;
-                if (m_tabInventaire[m_indexRangee, m_indexColonne].quantite == 0)
+                if (m_tabInventaire[m_indexRangee, m_indexColonne].quantite == 0)   // Si la quantité est 0
                 {
                     m_qteZero = true;   // Met la quantité restante à 0
                     tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
@@ -91,10 +109,10 @@ namespace Lab2_MachineDistributrice_JGM
             }
             else
             {
-                m_indexRangee = bouton.Text[0] - 'A';
+                m_indexRangee = bouton.Text[0] - 'A';   // Récupère le numéro de l'index en fonction de la valeur ASCII
                 SetClavierChiffres();   // Met le clavier en mode chiffres
             }
-            Affiche();
+            Affiche();  // Refresh l'affichage
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
@@ -105,7 +123,7 @@ namespace Lab2_MachineDistributrice_JGM
             m_retourCredit = m_credit;
             tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
             SetClavierState(false); // Barre le clavier
-            Affiche();
+            Affiche();  // Refresh l'affichage
         }
 
         private void btn_Enter_Click(object sender, EventArgs e)
@@ -124,7 +142,7 @@ namespace Lab2_MachineDistributrice_JGM
                     tmr_1Sec.Enabled = true;    // Activation du timer de 1 seconde
                 }
             }
-            Affiche();
+            Affiche();  // Refresh l'affichage
         }
 
         private void Credit_Click(object sender, EventArgs e)
@@ -135,52 +153,60 @@ namespace Lab2_MachineDistributrice_JGM
             temporaire = temporaire.Remove(1, 1);   // Efface le point
             m_credit += Convert.ToInt32(temporaire);// Ajout du nombre de crédits
 
-            Affiche();
+            Affiche();  // Refresh l'affichage
         }
 
+        /// <summary>
+        /// Fonction servant à barrer ou débarrer le clavier en fonction de la valeur reçus
+        /// </summary>
+        /// <param name="state"> True = le clavier est débarré, False = le clavier est barré</param>
         private void SetClavierState(bool state)
         {
-            for (int i = 0; i < NBCOLONNE; i++)
+            for (int i = 0; i < NBCOLONNE; i++) // Pour chaque touche du clavier (autre que enter et clear)
             {
-                m_Clavier[i].Enabled = state;
+                m_Clavier[i].Enabled = state;   // Met le clavier à l'état spécifié
             }
         }
 
         private void SetClavierLettre()
         {
             int i = 0;
-            for (i = 1; i < NBRANGEE + 1; i++)
+            for (i = 1; i < NBRANGEE + 1; i++)  // Pour chaque bouton
             {
-                m_Clavier[i].Text = Convert.ToChar((i - 1) + 'A').ToString();
+                m_Clavier[i].Text = Convert.ToChar((i - 1) + 'A').ToString();   // Met le texte du clavier à la touche correspondante
             }
-            m_Clavier[0].Text = " ";
-            for (; i < NBCOLONNE; i++)
+            m_Clavier[0].Text = " ";    // Met un espace pour le bouton 0
+            for (/*Ne change pas i*/; i < NBCOLONNE; i++)   // Pour les boutons de trop
             {
-                m_Clavier[i].Text = " ";
+                m_Clavier[i].Text = " ";    // Met des espaces pour les boutons de trop
             }
         }
 
-        private void SetClavierChiffres()
+        private void SetClavierChiffres()   
         {
-            for (int i = 0; i < NBCOLONNE; i++)
+            for (int i = 0; i < NBCOLONNE; i++) // Pour chaque bouton
             {
-                m_Clavier[i].Text = i.ToString();
+                m_Clavier[i].Text = i.ToString();   // Met le texte du clavier au nombre correspondant
             }
         }
 
+        /// <summary>
+        /// Fonction servant à afficher ce qui est générer par la fonction genererAffichage()
+        /// </summary>
         private void Affiche()
         {
             // Génération d'un nouvelle affichage
             if (m_objAffichage.genererAffichage(m_indexRangee, m_indexColonne, m_credit, m_retourCredit, m_prixCourant, m_distributionActive, m_manqueCredit, m_annulationVente, m_qteZero))
             {
-                // Refresh l'affichage si besoin (if genererAffichage = true)
+                // Refresh l'affichage si besoin (si genererAffichage = true)
                 lb_Affichage.Items.Clear();    // Efface l'affichage
                 for (int i = 0; i < 4; i++)
                 {
-                    lb_Affichage.Items.Add(m_objAffichage.lignesAffichage[i]);
+                    lb_Affichage.Items.Add(m_objAffichage.lignesAffichage[i]);  // Ajoute le texte dans la liste box
                 }
             }
         }
+
 
         private void tmr_1Sec_Tick_1(object sender, EventArgs e)
         {
@@ -222,7 +248,7 @@ namespace Lab2_MachineDistributrice_JGM
                 SetClavierState(true);  // Unlock le clavier
                 SetClavierLettre(); // Met le clavien en mode lettre
             }
-            Affiche();
+            Affiche();  // Refresh l'affichage
         }
 
         /// <summary>
@@ -267,10 +293,10 @@ namespace Lab2_MachineDistributrice_JGM
         /// <param name="e"></param>
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
-            int price = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].prix;
-            int quantity = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].quantite;
-            tb_Price.Text = price.ToString();
-            tb_Quantity.Text = quantity.ToString();
+            int price = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].prix;    // Prix de l'item correspondante
+            int quantity = m_tabInventaire[cb_Rangee.SelectedIndex, cb_Colonne.SelectedIndex].quantite; // Quantité de l'item correspondante
+            tb_Price.Text = price.ToString();   // Met le prix dans la text box
+            tb_Quantity.Text = quantity.ToString(); // Met la quantité dans la text box
         }
     }
 }

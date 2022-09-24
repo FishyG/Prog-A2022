@@ -40,8 +40,7 @@ namespace Lab2_MachineDistributrice_JGM
         /// <param name="qteItem"> on reçoit la quantité de l'item lors de sa création<</param>
         public ItemInventaire(int prixItem, int qteItem)
         {
-            m_prix = prixItem;
-            m_quantite = qteItem;
+            modifierInventaire(prixItem,qteItem);
         }
 
 
@@ -54,7 +53,7 @@ namespace Lab2_MachineDistributrice_JGM
         /// <returns>Vrai si la modification a réussi. Faux si non.</returns>
         public bool modifierInventaire(int oPrix, int oQuantite)
         {
-            bool retour = true;
+            bool retour = false;
 
             if (((oPrix >= 25 && oPrix <= 300) && (oPrix % 5 == 0))) // Si plus que 25$, moins que 300$ et un multiple de 5 cents
             {
@@ -62,16 +61,8 @@ namespace Lab2_MachineDistributrice_JGM
                 {
                     m_prix = oPrix;
                     m_quantite = oQuantite;
+                    retour = true;  // Retourne true si l'opération a fonctionné
                 }
-                else
-                {
-                    retour = false;
-                }
-
-            }
-            else
-            {
-                retour = false;
             }
 
             return retour;
@@ -82,8 +73,8 @@ namespace Lab2_MachineDistributrice_JGM
         /// </summary>
         public void diminuerInventaire()
         {
-            if(m_quantite > 0)
-                m_quantite--;
+            if(m_quantite > 0)  // Si la quantité est plus que 0
+                m_quantite--;   // Diminue la quantité de 1
         }
     }
 }
