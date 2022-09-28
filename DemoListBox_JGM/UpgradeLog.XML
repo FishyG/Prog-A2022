@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="DemoListBox">
+</Property><Property Name="Fichier solution" Value="I:\Cours\247-516-SH (Prog. Avancee Sys. Emb)\Demo\DemoListBox\DemoListBox.sln">
+</Property><Property Name="Date" Value="19 septembre 2012">
+</Property><Property Name="Time" Value="09:21">
+</Property></Properties><Event ErrorLevel="0" Project="DemoListBox" Source="DemoListBox.csproj" Description="Projet correctement converti">
+</Event><Event ErrorLevel="3" Project="DemoListBox" Source="DemoListBox.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="DemoListBox.sln" Description="Solution correctement convertie">
+</Event><Event ErrorLevel="3" Project="" Source="DemoListBox.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DemoListBox" Source="DemoListBox.csproj" Description="Analyse terminée : la mise à niveau n'est pas requise pour les fichiers projet.">
+</Event></UpgradeLog>

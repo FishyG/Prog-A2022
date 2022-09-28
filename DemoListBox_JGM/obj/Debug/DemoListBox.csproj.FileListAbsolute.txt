@@ -1,0 +1,18 @@
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\bin\Debug\DemoListBox.exe
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\bin\Debug\DemoListBox.pdb
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.csprojResolveAssemblyReference.cache
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.Form1.resources
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.Properties.Resources.resources
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.csproj.GenerateResource.Cache
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.csproj.CoreCompileInputs.cache
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.exe
+M:\ACours\247-516 (C#)\Demos2018\DemoListBox_Etu\obj\Debug\DemoListBox.pdb
+C:\Users\Jessy\source\repos\DemoListBox_JGM\bin\Debug\DemoListBox.exe
+C:\Users\Jessy\source\repos\DemoListBox_JGM\bin\Debug\DemoListBox.pdb
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.Form1.resources
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.Properties.Resources.resources
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.exe
+C:\Users\Jessy\source\repos\DemoListBox_JGM\obj\Debug\DemoListBox.pdb
