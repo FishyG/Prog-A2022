@@ -1,0 +1,11 @@
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\bin\Release\Lab3_PortSerie_JGM.exe.config
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\bin\Release\Lab3_PortSerie_JGM.exe
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\bin\Release\Lab3_PortSerie_JGM.pdb
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.csproj.AssemblyReference.cache
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.Form1.resources
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.Properties.Resources.resources
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.csproj.GenerateResource.cache
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.csproj.CoreCompileInputs.cache
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.exe
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Release\Lab3_PortSerie_JGM.pdb

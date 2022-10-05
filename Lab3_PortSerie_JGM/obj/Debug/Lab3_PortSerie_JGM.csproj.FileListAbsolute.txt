@@ -9,3 +9,4 @@ C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\bin\Debug\Lab3_PortSerie_JGM.exe
 C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\bin\Debug\Lab3_PortSerie_JGM.pdb
 C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Debug\Lab3_PortSerie_JGM.exe
 C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Debug\Lab3_PortSerie_JGM.pdb
+C:\Users\Jessy\source\repos\Lab3_PortSerie_JGM\obj\Debug\Lab3_PortSerie_JGM.frmConfigPort.resources
