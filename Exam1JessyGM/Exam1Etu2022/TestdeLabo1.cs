@@ -80,35 +80,10 @@ namespace TestLabo1
 
             if (unefois)
             {
-                string temp = tbSaisieQ1.Text;
-                tbSaisieQ1.Text = "";    // Vide la string 
-                string[] words = temp.Split('#'); // Sépare la string en mots à chaque fois qu'il y a un espace
+                string[] words = tbSaisieQ1.Text.Split('#'); // Sépare la string en mots à chaque fois qu'il y a un espace
 
-                for (int i = 0; i < words.Length; i++)
-                {
-                    string temp1 = words[i];
-                    words[i] = "";    // Vide la string
-                    foreach (char c in words[i])   // Pour chaque caractères de la string
-                    {
-                        words[i] = c + words[i];    // Met les caractères dans le sens inverse
-                    }
-                }
-                for (int i = 0; i < words.Length; i++)
-                {
-                    tbSaisieQ1.Text = words[i] + "#" + tbSaisieQ1.Text;   // Remet les caractères ensemble dans l'ordre inverse
-                }
+                tbSaisieQ1.Text = words[1] + "#" + words[0];   // Remet les caractères ensemble dans l'ordre inverse
             }
-            else
-            {
-                string temp2 = tbSaisieQ1.Text;
-                tbSaisieQ1.Text = "";    // Vide la string 
-
-                foreach (char c in temp2)   // Pour chaque caractères de la string
-                {
-                    tbSaisieQ1.Text = c + tbSaisieQ1.Text;    // Met les caractères dans le sens inverse
-                }
-            }
-
         }
 
         #endregion  // Q1
