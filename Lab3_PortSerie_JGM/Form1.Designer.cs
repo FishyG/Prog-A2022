@@ -37,10 +37,10 @@
             this.btn_TX = new System.Windows.Forms.Button();
             this.btn_configSerialPort = new System.Windows.Forms.Button();
             this.btn_OpenSerialPort = new System.Windows.Forms.Button();
-            this.btn_close = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btn_quit = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,7 @@
             this.tb_tx.Name = "tb_tx";
             this.tb_tx.Size = new System.Drawing.Size(228, 20);
             this.tb_tx.TabIndex = 0;
+            this.tb_tx.Text = "Banana";
             // 
             // label1
             // 
@@ -78,6 +79,7 @@
             // 
             this.tb_rx.Location = new System.Drawing.Point(12, 96);
             this.tb_rx.Name = "tb_rx";
+            this.tb_rx.ReadOnly = true;
             this.tb_rx.Size = new System.Drawing.Size(228, 20);
             this.tb_rx.TabIndex = 3;
             // 
@@ -112,16 +114,6 @@
             this.btn_OpenSerialPort.UseVisualStyleBackColor = true;
             this.btn_OpenSerialPort.Click += new System.EventHandler(this.btn_OpenSerialPort_Click);
             // 
-            // btn_close
-            // 
-            this.btn_close.Location = new System.Drawing.Point(186, 175);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(54, 23);
-            this.btn_close.TabIndex = 19;
-            this.btn_close.Text = "Close";
-            this.btn_close.UseVisualStyleBackColor = true;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -144,13 +136,23 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
             // 
+            // btn_quit
+            // 
+            this.btn_quit.Location = new System.Drawing.Point(186, 175);
+            this.btn_quit.Name = "btn_quit";
+            this.btn_quit.Size = new System.Drawing.Size(54, 23);
+            this.btn_quit.TabIndex = 19;
+            this.btn_quit.Text = "Quit";
+            this.btn_quit.UseVisualStyleBackColor = true;
+            this.btn_quit.Click += new System.EventHandler(this.btn_close_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 227);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.btn_close);
+            this.Controls.Add(this.btn_quit);
             this.Controls.Add(this.btn_OpenSerialPort);
             this.Controls.Add(this.btn_configSerialPort);
             this.Controls.Add(this.btn_TX);
@@ -159,7 +161,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_tx);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Lab Serial Jessy";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -177,10 +179,10 @@
         private System.Windows.Forms.Button btn_TX;
         private System.Windows.Forms.Button btn_configSerialPort;
         private System.Windows.Forms.Button btn_OpenSerialPort;
-        private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Button btn_quit;
     }
 }
 
