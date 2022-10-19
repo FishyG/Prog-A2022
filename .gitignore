@@ -11,6 +11,5 @@
 .vs/
 
 # Visual Studio build directory
-bin/
-
-obj/
+bin
+obj
