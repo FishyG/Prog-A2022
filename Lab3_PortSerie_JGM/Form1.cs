@@ -112,7 +112,11 @@ namespace Lab3_PortSerie_JGM
                     serialPort1.Close();
 
                 //On récupère les informations de configurations et on les assignent à au port série
+                if (fConfig.m_nom == null)
+                    MessageBox.Show("No COM port", "Error");   // Affiche un message d'erreur si il n'y a pas de ports
+                else
                 serialPort1.PortName = fConfig.m_nom;
+                
                 serialPort1.BaudRate = fConfig.m_vitesse;
                 serialPort1.Parity = fConfig.m_parite;
                 serialPort1.DataBits = fConfig.m_nbBit;
