@@ -158,6 +158,7 @@ namespace Lab3_PortSerie_JGM
                         }
                         else // Affiche un message d'erreur si aucun port n'est choisi
                             MessageBox.Show("Invalid port, choose a port ", "Invalid port", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        result = DialogResult.OK;
                     }
                     catch (UnauthorizedAccessException)
                     {
@@ -169,7 +170,7 @@ namespace Lab3_PortSerie_JGM
                         // Affiche un message d'erreur si le port n'existe plus (débranché)
                         result = MessageBox.Show("The port " + serialPort1.PortName + " does not exist.", serialPort1.PortName + " IS INVALID X_X", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);   // Affiche un message d'erreur si l'opération est invalide
                     }
-                } while (result == DialogResult.Retry); 
+                } while (result == DialogResult.Retry);
             }
             else // Si le port est ouvert
             {
