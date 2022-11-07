@@ -36,36 +36,36 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownConfig = new System.Windows.Forms.ToolStripDropDownButton();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbTemperature = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbHumidity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbWindDirection = new System.Windows.Forms.TextBox();
+            this.tbWindSpeed = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbPressure = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Temperature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Humidity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WindSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WindDirection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -109,20 +109,23 @@
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save as ...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // toolStripDropDownConfig
             // 
             this.toolStripDropDownConfig.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownConfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serialPortToolStripMenuItem});
+            this.serialPortToolStripMenuItem,
+            this.openSerialPortToolStripMenuItem});
             this.toolStripDropDownConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripDropDownConfig.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownConfig.Image")));
             this.toolStripDropDownConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -134,9 +137,16 @@
             // serialPortToolStripMenuItem
             // 
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
-            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.serialPortToolStripMenuItem.Text = "Serial Port";
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.serialPortToolStripMenuItem.Text = "Serial Port Config";
             this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.serialPortToolStripMenuItem_Click);
+            // 
+            // openSerialPortToolStripMenuItem
+            // 
+            this.openSerialPortToolStripMenuItem.Name = "openSerialPortToolStripMenuItem";
+            this.openSerialPortToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.openSerialPortToolStripMenuItem.Text = "Open Serial Port";
+            this.openSerialPortToolStripMenuItem.Click += new System.EventHandler(this.openSerialPortToolStripMenuItem_Click);
             // 
             // toolStrip2
             // 
@@ -164,6 +174,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(35, 35);
             this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -173,25 +184,27 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 32);
             this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(81)))), ((int)(((byte)(40)))));
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.tbTemperature);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 80);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 134);
             this.panel1.TabIndex = 2;
             // 
-            // textBox3
+            // tbTemperature
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(8, 59);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(128, 23);
-            this.textBox3.TabIndex = 7;
+            this.tbTemperature.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
+            this.tbTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTemperature.Location = new System.Drawing.Point(8, 59);
+            this.tbTemperature.Name = "tbTemperature";
+            this.tbTemperature.ReadOnly = true;
+            this.tbTemperature.Size = new System.Drawing.Size(128, 23);
+            this.tbTemperature.TabIndex = 7;
             // 
             // label1
             // 
@@ -207,21 +220,22 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(81)))), ((int)(((byte)(40)))));
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.tbHumidity);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(218, 80);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 134);
             this.panel2.TabIndex = 3;
             // 
-            // textBox2
+            // tbHumidity
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(8, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(128, 23);
-            this.textBox2.TabIndex = 6;
+            this.tbHumidity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
+            this.tbHumidity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbHumidity.Location = new System.Drawing.Point(8, 59);
+            this.tbHumidity.Name = "tbHumidity";
+            this.tbHumidity.ReadOnly = true;
+            this.tbHumidity.Size = new System.Drawing.Size(128, 23);
+            this.tbHumidity.TabIndex = 6;
             // 
             // label2
             // 
@@ -237,8 +251,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(81)))), ((int)(((byte)(40)))));
-            this.panel3.Controls.Add(this.textBox4);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.tbWindDirection);
+            this.panel3.Controls.Add(this.tbWindSpeed);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label3);
@@ -247,23 +261,25 @@
             this.panel3.Size = new System.Drawing.Size(200, 134);
             this.panel3.TabIndex = 4;
             // 
-            // textBox4
+            // tbWindDirection
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(8, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(128, 23);
-            this.textBox4.TabIndex = 8;
+            this.tbWindDirection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
+            this.tbWindDirection.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbWindDirection.Location = new System.Drawing.Point(8, 105);
+            this.tbWindDirection.Name = "tbWindDirection";
+            this.tbWindDirection.ReadOnly = true;
+            this.tbWindDirection.Size = new System.Drawing.Size(128, 23);
+            this.tbWindDirection.TabIndex = 8;
             // 
-            // textBox1
+            // tbWindSpeed
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(8, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 23);
-            this.textBox1.TabIndex = 4;
+            this.tbWindSpeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
+            this.tbWindSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbWindSpeed.Location = new System.Drawing.Point(8, 59);
+            this.tbWindSpeed.Name = "tbWindSpeed";
+            this.tbWindSpeed.ReadOnly = true;
+            this.tbWindSpeed.Size = new System.Drawing.Size(128, 23);
+            this.tbWindSpeed.TabIndex = 4;
             // 
             // label7
             // 
@@ -301,21 +317,22 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(81)))), ((int)(((byte)(40)))));
-            this.panel4.Controls.Add(this.textBox5);
+            this.panel4.Controls.Add(this.tbPressure);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(630, 80);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 134);
             this.panel4.TabIndex = 5;
             // 
-            // textBox5
+            // tbPressure
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(8, 59);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(128, 23);
-            this.textBox5.TabIndex = 3;
+            this.tbPressure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(233)))), ((int)(((byte)(168)))));
+            this.tbPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPressure.Location = new System.Drawing.Point(8, 59);
+            this.tbPressure.Name = "tbPressure";
+            this.tbPressure.ReadOnly = true;
+            this.tbPressure.Size = new System.Drawing.Size(128, 23);
+            this.tbPressure.TabIndex = 3;
             // 
             // label4
             // 
@@ -335,7 +352,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Time,
-            this.Source,
             this.Temperature,
             this.Humidity,
             this.WindSpeed,
@@ -347,17 +363,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(818, 225);
             this.dataGridView1.TabIndex = 6;
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(25)))));
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(845, 22);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
             // Time
             // 
             this.Time.HeaderText = "Time";
             this.Time.Name = "Time";
             this.Time.ReadOnly = true;
-            // 
-            // Source
-            // 
-            this.Source.HeaderText = "Source";
-            this.Source.Name = "Source";
-            this.Source.ReadOnly = true;
             // 
             // Temperature
             // 
@@ -388,32 +428,6 @@
             this.Pressure.HeaderText = "Pressure (kPa)";
             this.Pressure.Name = "Pressure";
             this.Pressure.ReadOnly = true;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(25)))));
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(845, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
             // Form1
             // 
@@ -472,24 +486,24 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbTemperature;
+        private System.Windows.Forms.TextBox tbHumidity;
+        private System.Windows.Forms.TextBox tbWindDirection;
+        private System.Windows.Forms.TextBox tbWindSpeed;
+        private System.Windows.Forms.TextBox tbPressure;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripMenuItem openSerialPortToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Source;
         private System.Windows.Forms.DataGridViewTextBoxColumn Temperature;
         private System.Windows.Forms.DataGridViewTextBoxColumn Humidity;
         private System.Windows.Forms.DataGridViewTextBoxColumn WindSpeed;
         private System.Windows.Forms.DataGridViewTextBoxColumn WindDirection;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pressure;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 
