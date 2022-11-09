@@ -68,7 +68,6 @@ namespace ServeurUDP
                 return "";
         }
 
-
         public void ArreteClientUDP()
         {
             udpClient.Close();
