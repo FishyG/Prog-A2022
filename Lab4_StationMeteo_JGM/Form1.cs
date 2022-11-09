@@ -7,6 +7,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.IO;
+using System.Linq;
 
 namespace Lab4_StationMeteo_JGM
 {
@@ -18,6 +19,8 @@ namespace Lab4_StationMeteo_JGM
         // variables membres liées à la gestion des trames
         const int LIMITE_BUFFER = 128;  // Grosseur max du buffer de réception
         List<byte> m_lstTrameRx = new List<byte>(); //conserve les octets reçus du port. Seule la méthode DataReceived du port série utilise cette variable
+
+
 
         // variables membres liées à la gestion des trames
         const Byte SOH = 0x01; // défini dans le protocole
@@ -184,15 +187,19 @@ namespace Lab4_StationMeteo_JGM
                     m_lstTrameRx.Add(lecture[i]);
                 }
 
-                if (verifTrame(m_lstTrameRx))
+                if (m_lstTrameRx.Count >= (int)enumTrame.maxTrame)
                 {
-                    BeginInvoke(objDelegate, m_lstTrameRx);
+                    if (verifTrame(m_lstTrameRx))
+                    {
+                        BeginInvoke(objDelegate, m_lstTrameRx);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Serial Frame Error (invalid data received)", "Reception Error");
+                        m_lstTrameRx.Clear();   // Efface la trame
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Serial Frame Error (invalid data received)", "Reception Error");
-                    m_lstTrameRx.Clear();   // Efface la trame
-                }
+                //else if (m_lstTrameRx.Count )
             }
         }
         /// <summary>
@@ -211,7 +218,7 @@ namespace Lab4_StationMeteo_JGM
                 if (!((trame[(int)enumTrame.soh] == SOH) && allgood))   // Si SOH est ok
                     allgood = false;
              
-                if (!((trame[12] == calculChecksum(trame)) && allgood))
+                if (!((trame[(int)enumTrame.checksum] == calculChecksum(trame)) && allgood))
                     allgood = false;
             }
             
@@ -238,14 +245,16 @@ namespace Lab4_StationMeteo_JGM
         private void methodeDelegeAffiche(List<byte> frame)
         {
             string time = string.Format("{0:HH:mm:ss}", DateTime.Now);  // Get time from the os (time the data was received)
-            string temperature = Convert.ToString((sbyte)frame[(int)enumTrame.tempEntier]);         //************************************************************************************
-            string temperatureFrac = Convert.ToString(frame[(int)enumTrame.tempFraction]);   //
-            string humidity = Convert.ToString(frame[(int)enumTrame.humidite]);              // Conversion des valeur en string 
-            string windSpeed = Convert.ToString(frame[(int)enumTrame.vitVent]);                     // Pour plus d'info voir :
-            string windDir = Convert.ToString((enumDirVent)frame[(int)enumTrame.dirVent]);          // http://wikitge.org/w/images/b/b4/Trame_Projet_M%C3%A9t%C3%A9o_du_cours_ISO.pdf
-            string pressure = Convert.ToString(frame[(int)enumTrame.pressionEntier]);        //
-            string pressureFrac = Convert.ToString(frame[(int)enumTrame.pressionFraction]);  //************************************************************************************
+            string temperature = Convert.ToString((sbyte)frame[(int)enumTrame.tempEntier]); //************************************************************************************
+            string temperatureFrac = Convert.ToString(frame[(int)enumTrame.tempFraction]);  //
+            string humidity = Convert.ToString(frame[(int)enumTrame.humidite]);             // Conversion des valeur en string 
+            string windSpeed = Convert.ToString(frame[(int)enumTrame.vitVent]);             // Pour plus d'info voir :
+            string windDir = Convert.ToString((enumDirVent)frame[(int)enumTrame.dirVent]);  // http://wikitge.org/w/images/b/b4/Trame_Projet_M%C3%A9t%C3%A9o_du_cours_ISO.pdf
+            string pressure = Convert.ToString(frame[(int)enumTrame.pressionEntier]);       //
+            string pressureFrac = Convert.ToString(frame[(int)enumTrame.pressionFraction]); //************************************************************************************
 
+            if (windDir.All(char.IsDigit))
+                windDir = "Invalid";
             tbTemperature.Text = temperature + "." + temperatureFrac;    // écrit dans la case la temépature 
             tbHumidity.Text = humidity;  // écrit dans la case l'humidité
             tbWindSpeed.Text = windSpeed;  // écrit dans la case la vitesse du vent
@@ -263,20 +272,18 @@ namespace Lab4_StationMeteo_JGM
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StreamWriter swFichier;
-            int i, j;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();  // New object for the savefile dialog
             saveFileDialog1.AddExtension = true;    // Add the extension if the user forget
             saveFileDialog1.Filter = "Sus files (*.csv)|*.csv";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 swFichier = File.CreateText(saveFileDialog1.FileName);  // Create the text file
-                swFichier.Write("Donnees de la station meteo le " + DateTime.Now.ToString("yyyy-MM-dd") + " a " + string.Format("{0:HH:mm:ss tt}", DateTime.Now) + "\n\r"); // Add the little header like this http://wikitge.org/wiki/Fichier:FichierCSVLab4.JPG
-                for (i = 0; i < dataGridView1.RowCount -1 ; i++) // Les rangées
+                swFichier.WriteLine("Donnees de la station meteo le " + DateTime.Now.ToString("yyyy-MM-dd") + " a " + string.Format("{0:HH:mm:ss tt}", DateTime.Now)); // Add the little header like this http://wikitge.org/wiki/Fichier:FichierCSVLab4.JPG
+                for (int i = 0; i < dataGridView1.RowCount -1 ; i++) // Pour les rows
                 {
-                    for (j = 0; j < dataGridView1.ColumnCount - 1; j++) // Les cellules des rangées
+                    for (int j = 0; j < dataGridView1.ColumnCount - 1; j++) // Pour les columns
                     {
-                        swFichier.Write((string)
-                        (dataGridView1.Rows[i].Cells[j].Value) + ";");
+                        swFichier.Write((string)(dataGridView1.Rows[i].Cells[j].Value) + ";");
                     }
                     swFichier.WriteLine("");    // Jump to the next line
                 }
