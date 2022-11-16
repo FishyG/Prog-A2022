@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace Lab4_StationMeteo_JGM
 {
@@ -15,6 +16,9 @@ namespace Lab4_StationMeteo_JGM
     {
         public delegate void myProtoDelegate(List<byte> lineReceived);
         myProtoDelegate objDelegate;
+
+        Thread objTh;  //On fera tourner l'objet objThUDP dans un Thread pour la rx de la trame
+        ThreadRxUDP objUDP;
 
         // variables membres liées à la gestion des trames
         const int LIMITE_BUFFER = 128;  // Grosseur max du buffer de réception
@@ -47,11 +51,15 @@ namespace Lab4_StationMeteo_JGM
         public Form1()
         {
             objDelegate = methodeDelegeAffiche;   //nouvelle méthode depuis C#2.0
+
+            //On instencie les obj et lance le Thread
+            objUDP = new ThreadRxUDP(this);
+            objUDP.objDelegate = methodeDelegeAfficheNetwork; //on instancie le delegate (En bref, objDelegate est un pointeur de fonction qui pointe sur DelegateAffiche.
+            objTh = new Thread(objUDP.FaitTravail);
+            objTh.Start();
+
             InitializeComponent();
-            /*foreach(DataGridViewRow row in dataGridView1.Rows)
-            {
-                row.DefaultCellStyle.BackColor = Color.red;
-            }*/
+
             toolStripStatusLabel1.Text = serialPort1.PortName + ":" + serialPort1.BaudRate.ToString() + "," + serialPort1.Parity.ToString() + "," + serialPort1.DataBits.ToString() + "," + serialPort1.StopBits.ToString();
             if (serialPort1.IsOpen)
             {
@@ -253,20 +261,51 @@ namespace Lab4_StationMeteo_JGM
             string pressure = Convert.ToString(frame[(int)enumTrame.pressionEntier]);       //
             string pressureFrac = Convert.ToString(frame[(int)enumTrame.pressionFraction]); //************************************************************************************
 
-            if (windDir.All(char.IsDigit))
-                windDir = "Invalid";
+            if (windDir.All(char.IsDigit))  // Si la direction est un chiffre
+                windDir = "Invalid";        // Change la string pour invalid
+
             tbTemperature.Text = temperature + "." + temperatureFrac;    // écrit dans la case la temépature 
             tbHumidity.Text = humidity;  // écrit dans la case l'humidité
             tbWindSpeed.Text = windSpeed;  // écrit dans la case la vitesse du vent
             tbWindDirection.Text = windDir;    // écrit dans la case la direction du vent
             tbPressure.Text = pressure + "." + pressureFrac;   // écrit dans la case la pression
 
-            dataGridView1.Rows.Insert(0, time, temperature + "." + temperatureFrac, humidity, windSpeed, windDir, pressure + "." + pressureFrac);
-
-            //dataGridView1.Rows[0].Selected = true;  // sélection la première 
-            //dataGridView1.Rows[1].Selected = false; // désélection la deuxième
+            dataGridView1.Rows.Insert(0, time, serialPort1.PortName.ToString(), temperature + "." + temperatureFrac, humidity, windSpeed, windDir, pressure + "." + pressureFrac);
 
             m_lstTrameRx.Clear();   // Efface la trame
+        }
+
+        private void methodeDelegeAfficheNetwork(List<byte> buffer, string srcIp)
+        {
+            if (buffer.Count >= (int)enumTrame.maxTrame)
+            {
+                if (verifTrame(buffer))
+                {
+                    string time = string.Format("{0:HH:mm:ss}", DateTime.Now);  // Get time from the os (time the data was received)
+                    string temperature = Convert.ToString((sbyte)buffer[(int)enumTrame.tempEntier]); //************************************************************************************
+                    string temperatureFrac = Convert.ToString(buffer[(int)enumTrame.tempFraction]);  //
+                    string humidity = Convert.ToString(buffer[(int)enumTrame.humidite]);             // Conversion des valeur en string 
+                    string windSpeed = Convert.ToString(buffer[(int)enumTrame.vitVent]);             // Pour plus d'info voir :
+                    string windDir = Convert.ToString((enumDirVent)buffer[(int)enumTrame.dirVent]);  // http://wikitge.org/w/images/b/b4/Trame_Projet_M%C3%A9t%C3%A9o_du_cours_ISO.pdf
+                    string pressure = Convert.ToString(buffer[(int)enumTrame.pressionEntier]);       //
+                    string pressureFrac = Convert.ToString(buffer[(int)enumTrame.pressionFraction]); //************************************************************************************
+
+                    if (windDir.All(char.IsDigit))  // Si la direction est un chiffre
+                        windDir = "Invalid";        // Change la string pour invalid
+
+                    tbTemperature.Text = temperature + "." + temperatureFrac;    // écrit dans la case la temépature 
+                    tbHumidity.Text = humidity;  // écrit dans la case l'humidité
+                    tbWindSpeed.Text = windSpeed;  // écrit dans la case la vitesse du vent
+                    tbWindDirection.Text = windDir;    // écrit dans la case la direction du vent
+                    tbPressure.Text = pressure + "." + pressureFrac;   // écrit dans la case la pression
+
+                    dataGridView1.Rows.Insert(0, time, srcIp.ToString(), temperature + "." + temperatureFrac, humidity, windSpeed, windDir, pressure + "." + pressureFrac);
+                }
+                else
+                {
+                    MessageBox.Show("Serial Frame Error (invalid data received)", "Reception Error");
+                }
+            }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)

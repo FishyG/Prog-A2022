@@ -56,16 +56,17 @@
             this.tbPressure = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Temperature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Humidity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WindSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WindDirection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -352,6 +353,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Time,
+            this.Source,
             this.Temperature,
             this.Humidity,
             this.WindSpeed,
@@ -362,42 +364,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(818, 225);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // Time
-            // 
-            this.Time.HeaderText = "Time";
-            this.Time.Name = "Time";
-            this.Time.ReadOnly = true;
-            // 
-            // Temperature
-            // 
-            this.Temperature.HeaderText = "Temp (℃)";
-            this.Temperature.Name = "Temperature";
-            this.Temperature.ReadOnly = true;
-            // 
-            // Humidity
-            // 
-            this.Humidity.HeaderText = "Humidity (%)";
-            this.Humidity.Name = "Humidity";
-            this.Humidity.ReadOnly = true;
-            // 
-            // WindSpeed
-            // 
-            this.WindSpeed.HeaderText = "Wind Speed (km/h)";
-            this.WindSpeed.Name = "WindSpeed";
-            this.WindSpeed.ReadOnly = true;
-            // 
-            // WindDirection
-            // 
-            this.WindDirection.HeaderText = "Wind Direction";
-            this.WindDirection.Name = "WindDirection";
-            this.WindDirection.ReadOnly = true;
-            // 
-            // Pressure
-            // 
-            this.Pressure.HeaderText = "Pressure (kPa)";
-            this.Pressure.Name = "Pressure";
-            this.Pressure.ReadOnly = true;
             // 
             // serialPort1
             // 
@@ -428,6 +394,47 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Time";
+            this.Time.Name = "Time";
+            this.Time.ReadOnly = true;
+            // 
+            // Source
+            // 
+            this.Source.HeaderText = "Source";
+            this.Source.Name = "Source";
+            // 
+            // Temperature
+            // 
+            this.Temperature.HeaderText = "Temp (℃)";
+            this.Temperature.Name = "Temperature";
+            this.Temperature.ReadOnly = true;
+            // 
+            // Humidity
+            // 
+            this.Humidity.HeaderText = "Humidity (%)";
+            this.Humidity.Name = "Humidity";
+            this.Humidity.ReadOnly = true;
+            // 
+            // WindSpeed
+            // 
+            this.WindSpeed.HeaderText = "Wind Speed (km/h)";
+            this.WindSpeed.Name = "WindSpeed";
+            this.WindSpeed.ReadOnly = true;
+            // 
+            // WindDirection
+            // 
+            this.WindDirection.HeaderText = "Wind Direction";
+            this.WindDirection.Name = "WindDirection";
+            this.WindDirection.ReadOnly = true;
+            // 
+            // Pressure
+            // 
+            this.Pressure.HeaderText = "Pressure (kPa)";
+            this.Pressure.Name = "Pressure";
+            this.Pressure.ReadOnly = true;
             // 
             // Form1
             // 
@@ -499,6 +506,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem openSerialPortToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Source;
         private System.Windows.Forms.DataGridViewTextBoxColumn Temperature;
         private System.Windows.Forms.DataGridViewTextBoxColumn Humidity;
         private System.Windows.Forms.DataGridViewTextBoxColumn WindSpeed;
