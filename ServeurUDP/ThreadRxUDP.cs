@@ -11,7 +11,7 @@ namespace ServeurUDP
 {
     internal class ThreadRxUDP
     {
-        const int PORT_RX = 1250;  //Port de réception UDP
+        const int PORT_RX = 2223;  //Port de réception UDP
         const int MAX_TRAME = 512; //Grosseur max du buffer de réception
 
         private byte[] m_trameRx = new byte[MAX_TRAME];  //buffer de Rx
@@ -25,7 +25,7 @@ namespace ServeurUDP
         private Form ptrMain;
 
         // Pour le delegate
-        public delegate void monProtoDelegate(string s);
+        public delegate void monProtoDelegate(string s,string ip);
         public monProtoDelegate objDelegate;
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace ServeurUDP
                 ipClient = IpDistant.Address;  //ip du client UDP qui a émit la trame
                 portClient = IpDistant.Port;   //port du client UDP qui a émit la trame
 
-                ptrMain.BeginInvoke(objDelegate, GetMsgRecu()); //Appel de la méthode delegateAffiche(string msgRecu via BeginInvoke
+                ptrMain.BeginInvoke(objDelegate, GetMsgRecu(), ipClient.ToString()); //Appel de la méthode delegateAffiche(string msgRecu via BeginInvoke
             }
         }
 

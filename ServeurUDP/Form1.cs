@@ -30,10 +30,13 @@ namespace ServeurUDP
         }
 
         //Méthode delegate
-        private void delegateAffiche(string msgRecu)
+        private void delegateAffiche(string msgRecu, string ip)
         {
             if (msgRecu != "")  //code pour afficher
+            {
                 lb_Rx.Items.Add(msgRecu);
+                tbIP.Text = ip;
+            }
         }
 
         /// <summary>
