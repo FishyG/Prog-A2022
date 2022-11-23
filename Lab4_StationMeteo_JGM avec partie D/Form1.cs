@@ -242,7 +242,7 @@ namespace Lab4_StationMeteo_JGM
         {
             byte checksum = 0;
 
-            for (int i = 1; i < trame.Count - 1; i++)
+            for (int i = 2; i < trame.Count - 1; i++)
             {
                 checksum += trame[i];
             }
@@ -277,35 +277,42 @@ namespace Lab4_StationMeteo_JGM
 
         private void methodeDelegeAfficheNetwork(List<byte> buffer, string srcIp)
         {
-            if (buffer.Count >= (int)enumTrame.maxTrame)
-            {
-                if (verifTrame(buffer))
-                {
-                    string time = string.Format("{0:HH:mm:ss}", DateTime.Now);  // Get time from the os (time the data was received)
-                    string temperature = Convert.ToString((sbyte)buffer[(int)enumTrame.tempEntier]); //************************************************************************************
-                    string temperatureFrac = Convert.ToString(buffer[(int)enumTrame.tempFraction]);  //
-                    string humidity = Convert.ToString(buffer[(int)enumTrame.humidite]);             // Conversion des valeur en string 
-                    string windSpeed = Convert.ToString(buffer[(int)enumTrame.vitVent]);             // Pour plus d'info voir :
-                    string windDir = Convert.ToString((enumDirVent)buffer[(int)enumTrame.dirVent]);  // http://wikitge.org/w/images/b/b4/Trame_Projet_M%C3%A9t%C3%A9o_du_cours_ISO.pdf
-                    string pressure = Convert.ToString(buffer[(int)enumTrame.pressionEntier]);       //
-                    string pressureFrac = Convert.ToString(buffer[(int)enumTrame.pressionFraction]); //************************************************************************************
+            string time = string.Format("{0:HH:mm:ss}", DateTime.Now);  // Get time from the os (time the data was received)
+            float temperature1 = (Int16)(buffer[2] << 8) + (Int16)buffer[3];
+            string temperatureDHT1 = Convert.ToString(temperature1 / 10);
+            string humidityDHT1 = Convert.ToString(buffer[4]);
 
-                    if (windDir.All(char.IsDigit))  // Si la direction est un chiffre
-                        windDir = "Invalid";        // Change la string pour invalid
+            float temperature2 = (Int16)(buffer[5] << 8) + (Int16)buffer[6];
+            string temperatureDHT2 = Convert.ToString(temperature2 / 10);
+            string humidityDHT2 = Convert.ToString(buffer[7]);
 
-                    tbTemperature.Text = temperature + "." + temperatureFrac;    // écrit dans la case la temépature 
-                    tbHumidity.Text = humidity;  // écrit dans la case l'humidité
-                    tbWindSpeed.Text = windSpeed;  // écrit dans la case la vitesse du vent
-                    tbWindDirection.Text = windDir;    // écrit dans la case la direction du vent
-                    tbPressure.Text = pressure + "." + pressureFrac;   // écrit dans la case la pression
+            float temperature3 = (Int16)(buffer[8] << 8) + (Int16)buffer[9];
+            string temperatureDHT3 = Convert.ToString(temperature3 / 10);
+            string humidityDHT3 = Convert.ToString(buffer[10]);
 
-                    dataGridView1.Rows.Insert(0, time, srcIp.ToString(), temperature + "." + temperatureFrac, humidity, windSpeed, windDir, pressure + "." + pressureFrac);
-                }
-                else
-                {
-                    //MessageBox.Show("Serial Frame Error (invalid data received)", "Reception Error");
-                }
-            }
+            float temperature4 = (Int16)(buffer[11] << 8) + (Int16)buffer[12];
+            string temperatureBMP = Convert.ToString(temperature4 / 10);
+            
+            string pressure = Convert.ToString(buffer[13]);
+            string pressureFrac = Convert.ToString(buffer[14]);
+            
+            string windDir = Convert.ToString((Int16)((Int16)(buffer[15] << 8) + (Int16)buffer[16]));
+            string windSpeed = Convert.ToString(buffer[17]);
+            
+            string radSolaire = Convert.ToString((buffer[18] << 8) + buffer[19]);
+
+
+            /*if (windDir.All(char.IsDigit))  // Si la direction est un chiffre
+                windDir = "Invalid";        // Change la string pour invalid
+            */
+
+            tbTemperature.Text = temperatureDHT2;    // écrit dans la case la temépature 
+            tbHumidity.Text = humidityDHT2;  // écrit dans la case l'humidité
+            tbWindSpeed.Text = windSpeed;  // écrit dans la case la vitesse du vent
+            tbWindDirection.Text = windDir;    // écrit dans la case la direction du vent
+            tbPressure.Text = pressure + "." + pressureFrac;   // écrit dans la case la pression
+
+            dataGridView1.Rows.Insert(0, time, srcIp.ToString(), temperatureDHT1, temperatureDHT2, temperatureDHT3, temperatureBMP, humidityDHT1, humidityDHT2, humidityDHT3, pressure + "." + pressureFrac, windDir, windSpeed, radSolaire);
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -340,6 +347,12 @@ namespace Lab4_StationMeteo_JGM
             if (serialPort1.IsOpen) // Ferme le port s'il est ouvert
                 serialPort1.Close();
             Application.Exit(); // Quitte l'application
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            objUDP.ArreteClientUDP();
+            objTh.Abort();
         }
     }
 }
