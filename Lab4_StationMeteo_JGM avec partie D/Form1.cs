@@ -312,7 +312,7 @@ namespace Lab4_StationMeteo_JGM
             tbWindDirection.Text = windDir;    // écrit dans la case la direction du vent
             tbPressure.Text = pressure + "." + pressureFrac;   // écrit dans la case la pression
 
-            dataGridView1.Rows.Insert(0, time, srcIp.ToString(), temperatureDHT1, temperatureDHT2, temperatureDHT3, temperatureBMP, humidityDHT1, humidityDHT2, humidityDHT3, pressure + "." + pressureFrac, windDir, windSpeed, radSolaire);
+            dataGridView1.Rows.Insert(0, time, srcIp.ToString() , temperatureDHT1, temperatureDHT2, temperatureDHT3, temperatureBMP, humidityDHT1, humidityDHT2, humidityDHT3, pressure + "." + pressureFrac, windDir, windSpeed, radSolaire);
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)

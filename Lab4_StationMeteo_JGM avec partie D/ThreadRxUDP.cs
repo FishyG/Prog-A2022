@@ -52,7 +52,7 @@ namespace Lab4_StationMeteo_JGM
                 ipClient = IpDistant.Address;  //ip du client UDP qui a émit la trame
                 portClient = IpDistant.Port;   //port du client UDP qui a émit la trame
 
-                ptrMain.BeginInvoke(objDelegate, Encoding.Default.GetBytes(GetMsgRecu()).ToList(), ipClient.ToString()); //Appel de la méthode delegateAffiche(string msgRecu via BeginInvoke
+                ptrMain.BeginInvoke(objDelegate, Encoding.Default.GetBytes(GetMsgRecu()).ToList(), ipClient.ToString() + ":" + portClient.ToString()); //Appel de la méthode delegateAffiche(string msgRecu via BeginInvoke
             }
         }
 
