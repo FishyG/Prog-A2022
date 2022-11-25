@@ -1,4 +1,24 @@
-﻿using System.Drawing;
+﻿/*
+ * @file   Form1.cs
+ * @author Jessy Grimard-Maheu
+ * @date   9/20/2022
+ * @brief  LaboStationMétép(lab4) pour le cours 247-516-SH-A22.
+ * Le but de ce laboratoire est de concevoir un affichage pour une station météo.
+ * Il est possible de recevoir des données via le port série ou sur le port 2223 en UDP. Pour avoir
+ * accès au port série il faut d'abord le configurer puis l'activer. La connexion réseau est active
+ * à partir du moment où l'application est lancée. Les données reçues sont afficher dans un dataGridView.
+ * La source des données est affichées dans le dataGridView dans la colonne source (COMX ou IP:Port).
+ * Les données sont également affichées dans des boites de texte au-dessus du dataGridView. Les données
+ * reçues sont la température, l'humidité, la direction et la vitesse du vent et finalement, la pression
+ * atmosphérique. Il est possible de sauvegarder les données affichées dans le dataGridView dans un 
+ * fichier .csv afin de conserver les données.
+ *
+ * @version 1.0 : Première version 
+ * Environnement de développement: Visual Studio 2022
+ * Matériel: Station météo sur le toit (partie D uniquement)
+ */
+
+using System.Drawing;
 using System;
 using System.Windows.Forms;
 using Lab3_PortSerie_JGM;
@@ -17,7 +37,7 @@ namespace Lab4_StationMeteo_JGM
         public delegate void myProtoDelegate(List<byte> lineReceived);
         myProtoDelegate objDelegate;
 
-        Thread objTh;  //On fera tourner l'objet objThUDP dans un Thread pour la rx de la trame
+        Thread objTh;  // On fera tourner l'objet objThUDP dans un Thread pour la rx de la trame
         ThreadRxUDP objUDP;
 
         // variables membres liées à la gestion des trames
@@ -182,6 +202,11 @@ namespace Lab4_StationMeteo_JGM
             serialPortToolStripMenuItem.PerformClick();
         }
 
+        /// <summary>
+        /// Méthode servant à g
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void serialPort1_DataReceived (object sender, SerialDataReceivedEventArgs e)
         {
             int nbALire;
@@ -192,18 +217,17 @@ namespace Lab4_StationMeteo_JGM
                 serialPort1.Read(lecture, 0, nbALire);
                 for (int i = 0; i < nbALire; i++)
                 {
-                    m_lstTrameRx.Add(lecture[i]);
+                    m_lstTrameRx.Add(lecture[i]);   // Ajout de la donnée dans la liste
                 }
 
-                if (m_lstTrameRx.Count >= (int)enumTrame.maxTrame)
+                if (m_lstTrameRx.Count >= (int)enumTrame.maxTrame)  // Si on n'a pas atteint la longueur max de la trame (transmission en 2 partie)
                 {
-                    if (verifTrame(m_lstTrameRx))
+                    if (verifTrame(m_lstTrameRx))   // Si la trame est valide
                     {
-                        BeginInvoke(objDelegate, m_lstTrameRx);
+                        BeginInvoke(objDelegate, m_lstTrameRx); // on affiche la trame
                     }
                     else
                     {
-                        //MessageBox.Show("Serial Frame Error (invalid data received)", "Reception Error");
                         m_lstTrameRx.Clear();   // Efface la trame
                     }
                 }
@@ -211,6 +235,7 @@ namespace Lab4_StationMeteo_JGM
             }
         }
         /// <summary>
+        /// Méthode permettant de tester une trame
         /// Retourne vrai, si la trame est valide. Faux si la trame est incomplète ou invalide.
         /// </summary>
         /// <param name="trame"></param>
@@ -219,14 +244,14 @@ namespace Lab4_StationMeteo_JGM
         {
             bool allgood = true;
 
-            if (!((trame.Count == (int)enumTrame.maxTrame) && allgood))
+            if (!((trame.Count == (int)enumTrame.maxTrame) && allgood)) // Si la trame est de la bonne longueur
                 allgood = false;
             else
             {
-                if (!((trame[(int)enumTrame.soh] == SOH) && allgood))   // Si SOH est ok
+                if (!(trame[(int)enumTrame.soh] == SOH))   // Si SOH est ok
                     allgood = false;
              
-                if (!((trame[(int)enumTrame.checksum] == calculChecksum(trame)) && allgood))
+                if (!(trame[(int)enumTrame.checksum] == calculChecksum(trame)))    // Si le checksum est valide
                     allgood = false;
             }
             
@@ -242,7 +267,7 @@ namespace Lab4_StationMeteo_JGM
         {
             byte checksum = 0;
 
-            for (int i = 1; i < trame.Count - 1; i++)
+            for (int i = 1; i < trame.Count - 1; i++)   // Ajoute de chaque nombre afin d'avoir le checksum total
             {
                 checksum += trame[i];
             }
@@ -250,6 +275,10 @@ namespace Lab4_StationMeteo_JGM
             return checksum;
         }
 
+        /// <summary>
+        /// Permet d'afficher le contenu de la liste fournie (affichage des données reçu sur le port série).
+        /// </summary>
+        /// <param name="frame"></param>
         private void methodeDelegeAffiche(List<byte> frame)
         {
             string time = string.Format("{0:HH:mm:ss}", DateTime.Now);  // Get time from the os (time the data was received)
@@ -275,11 +304,16 @@ namespace Lab4_StationMeteo_JGM
             m_lstTrameRx.Clear();   // Efface la trame
         }
 
+        /// <summary>
+        /// Affichage du contenu du buffer avec l'adresse ip source reçu.
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="srcIp"></param>
         private void methodeDelegeAfficheNetwork(List<byte> buffer, string srcIp)
         {
-            if (buffer.Count >= (int)enumTrame.maxTrame)
+            if (buffer.Count >= (int)enumTrame.maxTrame)    // Little check to make sure the file is of the right size (optional)
             {
-                if (verifTrame(buffer))
+                if (verifTrame(buffer)) // The buffer must be valid or it will be ignored
                 {
                     string time = string.Format("{0:HH:mm:ss}", DateTime.Now);  // Get time from the os (time the data was received)
                     string temperature = Convert.ToString((sbyte)buffer[(int)enumTrame.tempEntier]); //************************************************************************************
@@ -301,28 +335,30 @@ namespace Lab4_StationMeteo_JGM
 
                     dataGridView1.Rows.Insert(0, time, srcIp.ToString(), temperature + "." + temperatureFrac, humidity, windSpeed, windDir, pressure + "." + pressureFrac);
                 }
-                else
-                {
-                    //MessageBox.Show("Serial Frame Error (invalid data received)", "Reception Error");
-                }
             }
         }
 
+        /// <summary>
+        /// Permet de sauvegarder le dataGridView en format .csv
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StreamWriter swFichier;
+            StreamWriter swFichier;                                 // To be able to write in the stream
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();  // New object for the savefile dialog
-            saveFileDialog1.AddExtension = true;    // Add the extension if the user forget
+            saveFileDialog1.AddExtension = true;    // Add the extension if the user forget it
+            saveFileDialog1.DefaultExt = ".csv";    // The file must be a ".csv"
             saveFileDialog1.Filter = "Sus files (*.csv)|*.csv";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 swFichier = File.CreateText(saveFileDialog1.FileName);  // Create the text file
                 swFichier.WriteLine("Donnees de la station meteo le " + DateTime.Now.ToString("yyyy-MM-dd") + " a " + string.Format("{0:HH:mm:ss tt}", DateTime.Now)); // Add the little header like this http://wikitge.org/wiki/Fichier:FichierCSVLab4.JPG
-                for (int i = 0; i < dataGridView1.RowCount -1 ; i++) // Pour les rows
+                for (int i = 0; i < dataGridView1.RowCount -1 ; i++) // For each rows
                 {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++) // Pour les columns
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++) // For each columns
                     {
-                        swFichier.Write((string)(dataGridView1.Rows[i].Cells[j].Value) + ";");
+                        swFichier.Write((string)(dataGridView1.Rows[i].Cells[j].Value) + ";");  // Add the data to the file
                     }
                     swFichier.WriteLine("");    // Jump to the next line
                 }
@@ -330,16 +366,28 @@ namespace Lab4_StationMeteo_JGM
             }
         }
 
+        /// <summary>
+        /// Exécute la méthode pour sauvegarder un fichier.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             saveAsToolStripMenuItem.PerformClick();
         }
 
+        /// <summary>
+        /// Lorsque le bouton pour quitter est appuyé, quitte l'application proprement.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen) // Ferme le port s'il est ouvert
+            if (serialPort1.IsOpen)     // Ferme le port s'il est ouvert
                 serialPort1.Close();
-            Application.Exit(); // Quitte l'application
+
+            objUDP.ArreteClientUDP();   // Stop the UDP client
+            Application.Exit();         // Quitte l'application
         }
     }
 }

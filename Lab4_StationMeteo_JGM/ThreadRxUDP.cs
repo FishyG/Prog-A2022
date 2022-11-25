@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*
+ * @file   ThreadRxUDP.cs
+ * @author Jessy Grimard-Maheu
+ * @date   11/24/2022
+ * @brief  Classe pour le réception de données en UDP
+ * 
+ * Cette clase contient tous ce qu'il faut pour recevoir et gérer la réception des threads
+ * 
+ * @version 1.0 : Première version
+ * Environnement de développement: Visual Studio 2022
+ * Matériel: N/A
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -68,6 +81,9 @@ namespace Lab4_StationMeteo_JGM
                 return "";
         }
 
+        /// <summary>
+        /// Méthode servant à fermer le client UDP
+        /// </summary>
         public void ArreteClientUDP()
         {
             udpClient.Close();
