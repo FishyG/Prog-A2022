@@ -226,6 +226,7 @@
             this.sousValeurLumiere.TabIndex = 157;
             this.sousValeurLumiere.Text = "- 10% chaque lumière";
             this.sousValeurLumiere.UseVisualStyleBackColor = true;
+            this.sousValeurLumiere.Click += new System.EventHandler(this.sousValeurLumiere_Click);
             // 
             // addValeurLumiere
             // 
@@ -235,6 +236,7 @@
             this.addValeurLumiere.TabIndex = 156;
             this.addValeurLumiere.Text = "+ 10% chaque lumière";
             this.addValeurLumiere.UseVisualStyleBackColor = true;
+            this.addValeurLumiere.Click += new System.EventHandler(this.addValeurLumiere_Click);
             // 
             // razDelsButton
             // 
@@ -244,6 +246,7 @@
             this.razDelsButton.TabIndex = 159;
             this.razDelsButton.Text = "Remise à zéro";
             this.razDelsButton.UseVisualStyleBackColor = true;
+            this.razDelsButton.Click += new System.EventHandler(this.razDelsButton_Click);
             // 
             // lum11TextBox
             // 
@@ -252,6 +255,8 @@
             this.lum11TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum11TextBox.TabIndex = 21;
             this.lum11TextBox.Tag = "11";
+            this.lum11TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum11TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // enregistrerButton
             // 
@@ -269,6 +274,8 @@
             this.lum10TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum10TextBox.TabIndex = 20;
             this.lum10TextBox.Tag = "10";
+            this.lum10TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum10TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum9TextBox
             // 
@@ -277,6 +284,8 @@
             this.lum9TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum9TextBox.TabIndex = 19;
             this.lum9TextBox.Tag = "9";
+            this.lum9TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum9TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // toolStripStatusEtat
             // 
@@ -369,6 +378,8 @@
             this.lum8TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum8TextBox.TabIndex = 18;
             this.lum8TextBox.Tag = "8";
+            this.lum8TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum8TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum7TextBox
             // 
@@ -377,6 +388,8 @@
             this.lum7TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum7TextBox.TabIndex = 17;
             this.lum7TextBox.Tag = "7";
+            this.lum7TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum7TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum6TextBox
             // 
@@ -385,6 +398,8 @@
             this.lum6TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum6TextBox.TabIndex = 16;
             this.lum6TextBox.Tag = "6";
+            this.lum6TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum6TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // tabPInterface
             // 
@@ -540,6 +555,8 @@
             this.lum5TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum5TextBox.TabIndex = 15;
             this.lum5TextBox.Tag = "5";
+            this.lum5TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum5TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum4TextBox
             // 
@@ -548,6 +565,8 @@
             this.lum4TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum4TextBox.TabIndex = 14;
             this.lum4TextBox.Tag = "4";
+            this.lum4TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum4TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum3TextBox
             // 
@@ -556,6 +575,8 @@
             this.lum3TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum3TextBox.TabIndex = 13;
             this.lum3TextBox.Tag = "3";
+            this.lum3TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum3TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum2TextBox
             // 
@@ -564,6 +585,8 @@
             this.lum2TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum2TextBox.TabIndex = 12;
             this.lum2TextBox.Tag = "2";
+            this.lum2TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum2TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // lum1TextBox
             // 
@@ -572,6 +595,8 @@
             this.lum1TextBox.Size = new System.Drawing.Size(45, 20);
             this.lum1TextBox.TabIndex = 11;
             this.lum1TextBox.Tag = "1";
+            this.lum1TextBox.TextChanged += new System.EventHandler(this.lum1TextBox_TextChanged);
+            this.lum1TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTextBox_KeyPress);
             // 
             // haloLabel
             // 
@@ -681,6 +706,7 @@
             this.lum11TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum11TrackBar.TabIndex = 10;
             this.lum11TrackBar.Tag = "11";
+            this.lum11TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum10TrackBar
             // 
@@ -691,6 +717,7 @@
             this.lum10TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum10TrackBar.TabIndex = 9;
             this.lum10TrackBar.Tag = "10";
+            this.lum10TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum9TrackBar
             // 
@@ -701,6 +728,7 @@
             this.lum9TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum9TrackBar.TabIndex = 8;
             this.lum9TrackBar.Tag = "9";
+            this.lum9TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum8TrackBar
             // 
@@ -711,6 +739,7 @@
             this.lum8TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum8TrackBar.TabIndex = 7;
             this.lum8TrackBar.Tag = "8";
+            this.lum8TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum7TrackBar
             // 
@@ -721,6 +750,7 @@
             this.lum7TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum7TrackBar.TabIndex = 6;
             this.lum7TrackBar.Tag = "7";
+            this.lum7TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum6TrackBar
             // 
@@ -731,6 +761,7 @@
             this.lum6TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum6TrackBar.TabIndex = 5;
             this.lum6TrackBar.Tag = "6";
+            this.lum6TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum5TrackBar
             // 
@@ -741,6 +772,7 @@
             this.lum5TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum5TrackBar.TabIndex = 4;
             this.lum5TrackBar.Tag = "5";
+            this.lum5TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum4TrackBar
             // 
@@ -751,6 +783,7 @@
             this.lum4TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum4TrackBar.TabIndex = 3;
             this.lum4TrackBar.Tag = "4";
+            this.lum4TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum3TrackBar
             // 
@@ -761,6 +794,7 @@
             this.lum3TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum3TrackBar.TabIndex = 2;
             this.lum3TrackBar.Tag = "3";
+            this.lum3TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum2TrackBar
             // 
@@ -771,6 +805,7 @@
             this.lum2TrackBar.Size = new System.Drawing.Size(45, 143);
             this.lum2TrackBar.TabIndex = 1;
             this.lum2TrackBar.Tag = "2";
+            this.lum2TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // lum1TrackBar
             // 
@@ -781,6 +816,7 @@
             this.lum1TrackBar.Size = new System.Drawing.Size(45, 142);
             this.lum1TrackBar.TabIndex = 0;
             this.lum1TrackBar.Tag = "1";
+            this.lum1TrackBar.ValueChanged += new System.EventHandler(this.lum1TrackBar_ValueChanged);
             // 
             // tabControl1
             // 
