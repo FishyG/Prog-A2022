@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,29 +14,33 @@ namespace LampeDel_Etu
 {
     public partial class Form1 : Form
     {
-        /********* constantes ***********/
-        public const int NB_DEL = 11;
-
         /********** variables membres ***********/
-        private TrackBar[] m_LumTrackBar = new TrackBar[NB_DEL];  // Tableau de TrackBar pour les lumières (DEL et Halogènes)
-        private TextBox[] m_LumTextBox = new TextBox[NB_DEL];     // Tableau de TextBox pour les lumières (DEL et Halogènes)
+        private TrackBar[] m_LumTrackBar = new TrackBar[Constantes.NB_DEL];  // Tableau de TrackBar pour les lumières (DEL et Halogènes)
+        private TextBox[] m_LumTextBox = new TextBox[Constantes.NB_DEL];     // Tableau de TextBox pour les lumières (DEL et Halogènes)
+        List<Recette> objRecette = new List<Recette>(); //on devra instancier 48 objets recettes.
 
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
+            // Création d'une liste de 48 objets recettes
+            for (int i = 0; i < Constantes.NB_DEMI_HRE; i++)
+            {
+                objRecette.Add(new Recette(Constantes.NB_DEL));
+            }
 
             Control ctrlSuivant;        // Déclaration d'un objet Control
             ctrlSuivant = lumierePanel; // Le point de départ de la recherche sera le Pannel du contrôle des DELs
 
             // Boucle pour le tableau de TrackBar
-            for (int i = 0; i < NB_DEL; i++)
+            for (int i = 0; i < Constantes.NB_DEL; i++)
             {
                 ctrlSuivant = GetNextControl(ctrlSuivant, true);    // Passe au control suivant
                 m_LumTrackBar[i] = (TrackBar)ctrlSuivant;           // Casting de l'objet Control trouvé (ctrlSuivant) en TrackBar
                 m_LumTrackBar[i].Tag = i;                           // Assigne le tag
             }
             // Boucle pour le tableau de TextBox
-            for (int i = 0; i < NB_DEL; i++)
+            for (int i = 0; i < Constantes.NB_DEL; i++)
             {
                 ctrlSuivant = GetNextControl(ctrlSuivant, true);    // Passe au control suivant
                 m_LumTextBox[i] = (TextBox)ctrlSuivant;             // Casting de l'objet Control trouvé (ctrlSuivant) en TrackBar
@@ -94,15 +99,12 @@ namespace LampeDel_Etu
         {
             foreach (TrackBar trackBar in m_LumTrackBar)
             {
-                if (trackBar.Value < 100)
-                {
-                    if (trackBar.Value >= 90)
-                        trackBar.Value = 100;
-                    else
-                        trackBar.Value += 10;
+                if (trackBar.Value >= 90)
+                    trackBar.Value = 100;
+                else
+                    trackBar.Value += 10;
 
-                    m_LumTextBox[(int)trackBar.Tag].Text = Convert.ToString(trackBar.Value);
-                }
+                m_LumTextBox[(int)trackBar.Tag].Text = Convert.ToString(trackBar.Value);
             }
         }
 
@@ -115,15 +117,12 @@ namespace LampeDel_Etu
         {
             foreach (TrackBar trackBar in m_LumTrackBar)
             {
-                if (trackBar.Value > 0)
-                {
-                    if (trackBar.Value <= 10)
-                        trackBar.Value = 0;
-                    else
-                        trackBar.Value -= 10;
+                if (trackBar.Value <= 10)
+                    trackBar.Value = 0;
+                else
+                    trackBar.Value -= 10;
 
-                    m_LumTextBox[(int)trackBar.Tag].Text = Convert.ToString(trackBar.Value);
-                }
+                m_LumTextBox[(int)trackBar.Tag].Text = Convert.ToString(trackBar.Value);
             }
         }
 
@@ -149,6 +148,8 @@ namespace LampeDel_Etu
                 {
                     m_LumTrackBar[(int)textBox.Tag].Value = 0;  // Force la valeur de la trackbar à zéro
                     textBox.Text = "0";                         // Force la valeur de la textbox à zéro
+
+                    textBox.SelectionStart = textBox.Text.Length;   // Remet le curseur de la textBox à droite
                 }
             }
         }
@@ -167,6 +168,21 @@ namespace LampeDel_Etu
                 tempsConsigneTexteLabel.Text += "H30";
             else                                // Si on ne doit PAS afficher les 30 minutes
                 tempsConsigneTexteLabel.Text += "H00";
+
+            for (int i = 0; i < Constantes.NB_DEL; i++)
+            {
+                m_LumTrackBar[i].Value = objRecette[tempsTrackBar.Value].del[i];
+            }
+        }
+
+        private void enregistrerButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Constantes.NB_DEL; i++)
+            {
+                objRecette[tempsTrackBar.Value].del[i] = m_LumTrackBar[i].Value;
+            }
+
+            objRecette[tempsTrackBar.Value].pointEnr = true;
         }
     }
 }

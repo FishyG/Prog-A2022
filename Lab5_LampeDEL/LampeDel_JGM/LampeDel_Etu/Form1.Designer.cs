@@ -266,6 +266,7 @@
             this.enregistrerButton.TabIndex = 158;
             this.enregistrerButton.Text = "Enregistrer";
             this.enregistrerButton.UseVisualStyleBackColor = true;
+            this.enregistrerButton.Click += new System.EventHandler(this.enregistrerButton_Click);
             // 
             // lum10TextBox
             // 
@@ -474,9 +475,9 @@
             this.tempsConsigneTexteLabel.AutoSize = true;
             this.tempsConsigneTexteLabel.Location = new System.Drawing.Point(222, 92);
             this.tempsConsigneTexteLabel.Name = "tempsConsigneTexteLabel";
-            this.tempsConsigneTexteLabel.Size = new System.Drawing.Size(109, 13);
+            this.tempsConsigneTexteLabel.Size = new System.Drawing.Size(144, 13);
             this.tempsConsigneTexteLabel.TabIndex = 173;
-            this.tempsConsigneTexteLabel.Text = "Temps de consigne : ";
+            this.tempsConsigneTexteLabel.Text = "Temps de consigne :  23H30";
             // 
             // tempsTrackBar
             // 
