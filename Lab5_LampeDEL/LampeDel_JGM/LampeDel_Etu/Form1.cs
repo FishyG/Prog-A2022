@@ -22,26 +22,24 @@ namespace LampeDel_Etu
 
         public Form1()
         {
-            Control ctrlSuivant;  // Déclaration d'un objet Control
-
             InitializeComponent();
 
-            ctrlSuivant = lumierePanel;  // Le point de départ de la recherche sera le Pannel du contrôle des DELs
+            Control ctrlSuivant;        // Déclaration d'un objet Control
+            ctrlSuivant = lumierePanel; // Le point de départ de la recherche sera le Pannel du contrôle des DELs
 
             // Boucle pour le tableau de TrackBar
             for (int i = 0; i < NB_DEL; i++)
             {
                 ctrlSuivant = GetNextControl(ctrlSuivant, true);    // Passe au control suivant
                 m_LumTrackBar[i] = (TrackBar)ctrlSuivant;           // Casting de l'objet Control trouvé (ctrlSuivant) en TrackBar
-                m_LumTrackBar[i].Tag = i;
-                //m_LumTextBox[i] = (TextBox)ctrlSuivant;             // Casting de l'objet Control trouvé (ctrlSuivant) en TextBox
+                m_LumTrackBar[i].Tag = i;                           // Assigne le tag
             }
             // Boucle pour le tableau de TextBox
             for (int i = 0; i < NB_DEL; i++)
             {
                 ctrlSuivant = GetNextControl(ctrlSuivant, true);    // Passe au control suivant
                 m_LumTextBox[i] = (TextBox)ctrlSuivant;             // Casting de l'objet Control trouvé (ctrlSuivant) en TrackBar
-                m_LumTextBox[i].Tag = i;
+                m_LumTextBox[i].Tag = i;                            // Assigne le tag
                 m_LumTextBox[i].Text = "0";                         // Met le texte à 0
             }
         }
@@ -153,6 +151,22 @@ namespace LampeDel_Etu
                     textBox.Text = "0";                         // Force la valeur de la textbox à zéro
                 }
             }
+        }
+
+        /// <summary>
+        /// Pour afficher le "Temps de consigne" en format 24H00 quand le pointeur est déplacé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tempsTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            tempsConsigneTexteLabel.Text = "Temps de consigne : " + Convert.ToString(tempsTrackBar.Value / 2);  // Affichage tu temps à l'heure précise
+
+            // Ajout précision aux 30 minutes
+            if (tempsTrackBar.Value % 2 != 0)   // Si on doit afficher les 30 minutes
+                tempsConsigneTexteLabel.Text += "H30";
+            else                                // Si on ne doit PAS afficher les 30 minutes
+                tempsConsigneTexteLabel.Text += "H00";
         }
     }
 }

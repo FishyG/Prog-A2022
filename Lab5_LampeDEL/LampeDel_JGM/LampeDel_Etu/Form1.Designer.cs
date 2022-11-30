@@ -490,6 +490,7 @@
             this.tempsTrackBar.TabStop = false;
             this.tempsTrackBar.Tag = "22";
             this.tempsTrackBar.Value = 47;
+            this.tempsTrackBar.ValueChanged += new System.EventHandler(this.tempsTrackBar_ValueChanged);
             // 
             // lumierePanel
             // 
