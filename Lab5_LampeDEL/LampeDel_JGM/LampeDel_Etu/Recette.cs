@@ -25,7 +25,6 @@ namespace LampeDel_Etu
         {
             pointEnr = false;
             del = new List<int>();  // On instancie 48 objets recettes. 
-
             for (int i = 0; i < nb; i++)
             {
                 del.Add(0); // Ajout d'une DEL avec l'intensité 0

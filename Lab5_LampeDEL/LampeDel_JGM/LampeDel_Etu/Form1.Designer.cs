@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,6 +70,7 @@
             this.tempsConsigneTexteLabel = new System.Windows.Forms.Label();
             this.tempsTrackBar = new System.Windows.Forms.TrackBar();
             this.lumierePanel = new System.Windows.Forms.Panel();
+            this.del5Label = new System.Windows.Forms.Label();
             this.lum5TextBox = new System.Windows.Forms.TextBox();
             this.lum4TextBox = new System.Windows.Forms.TextBox();
             this.lum3TextBox = new System.Windows.Forms.TextBox();
@@ -79,7 +82,6 @@
             this.del8Label = new System.Windows.Forms.Label();
             this.del7Label = new System.Windows.Forms.Label();
             this.del6Label = new System.Windows.Forms.Label();
-            this.del5Label = new System.Windows.Forms.Label();
             this.del4Label = new System.Windows.Forms.Label();
             this.del3Label = new System.Windows.Forms.Label();
             this.del2Label = new System.Windows.Forms.Label();
@@ -98,6 +100,23 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPTableau = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Heure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Del10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Halo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPGraph = new System.Windows.Forms.TabPage();
+            this.btnHideAll = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkedListBoxDEL = new System.Windows.Forms.CheckedListBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPInterface.SuspendLayout();
@@ -117,6 +136,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPTableau.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPGraph.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // label16
@@ -323,6 +344,7 @@
             this.btnInterpol.TabIndex = 4;
             this.btnInterpol.Text = "Interpoler";
             this.btnInterpol.UseVisualStyleBackColor = true;
+            this.btnInterpol.Click += new System.EventHandler(this.btnInterpol_Click);
             // 
             // menuStrip1
             // 
@@ -351,12 +373,14 @@
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
             this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
+            this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
             // configurationToolStripMenuItem
             // 
@@ -497,6 +521,7 @@
             // 
             this.lumierePanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lumierePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lumierePanel.Controls.Add(this.del5Label);
             this.lumierePanel.Controls.Add(this.label16);
             this.lumierePanel.Controls.Add(this.label14);
             this.lumierePanel.Controls.Add(this.label13);
@@ -529,7 +554,6 @@
             this.lumierePanel.Controls.Add(this.del8Label);
             this.lumierePanel.Controls.Add(this.del7Label);
             this.lumierePanel.Controls.Add(this.del6Label);
-            this.lumierePanel.Controls.Add(this.del5Label);
             this.lumierePanel.Controls.Add(this.del4Label);
             this.lumierePanel.Controls.Add(this.del3Label);
             this.lumierePanel.Controls.Add(this.del2Label);
@@ -549,6 +573,15 @@
             this.lumierePanel.Name = "lumierePanel";
             this.lumierePanel.Size = new System.Drawing.Size(581, 265);
             this.lumierePanel.TabIndex = 172;
+            // 
+            // del5Label
+            // 
+            this.del5Label.AutoSize = true;
+            this.del5Label.Location = new System.Drawing.Point(212, 23);
+            this.del5Label.Name = "del5Label";
+            this.del5Label.Size = new System.Drawing.Size(26, 13);
+            this.del5Label.TabIndex = 26;
+            this.del5Label.Text = "Vert";
             // 
             // lum5TextBox
             // 
@@ -653,15 +686,6 @@
             this.del6Label.Size = new System.Drawing.Size(39, 13);
             this.del6Label.TabIndex = 27;
             this.del6Label.Text = "Rouge";
-            // 
-            // del5Label
-            // 
-            this.del5Label.AutoSize = true;
-            this.del5Label.Location = new System.Drawing.Point(212, 23);
-            this.del5Label.Name = "del5Label";
-            this.del5Label.Size = new System.Drawing.Size(26, 13);
-            this.del5Label.TabIndex = 26;
-            this.del5Label.Text = "Vert";
             // 
             // del4Label
             // 
@@ -824,6 +848,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPInterface);
             this.tabControl1.Controls.Add(this.tabPTableau);
+            this.tabControl1.Controls.Add(this.tabPGraph);
             this.tabControl1.Location = new System.Drawing.Point(8, 23);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tabControl1.Name = "tabControl1";
@@ -843,16 +868,182 @@
             this.tabPTableau.TabIndex = 0;
             this.tabPTableau.Text = "Tableau";
             this.tabPTableau.UseVisualStyleBackColor = true;
+            this.tabPTableau.Enter += new System.EventHandler(this.tabPTableau_Enter);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Heure,
+            this.Del1,
+            this.Del2,
+            this.Del3,
+            this.Del4,
+            this.Del5,
+            this.Del6,
+            this.Del7,
+            this.Del8,
+            this.Del9,
+            this.Del10,
+            this.Halo});
             this.dataGridView1.Location = new System.Drawing.Point(6, 5);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(663, 413);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // Heure
+            // 
+            this.Heure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Heure.HeaderText = "Heure";
+            this.Heure.Name = "Heure";
+            this.Heure.ReadOnly = true;
+            // 
+            // Del1
+            // 
+            this.Del1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del1.HeaderText = "Del1";
+            this.Del1.Name = "Del1";
+            this.Del1.ReadOnly = true;
+            // 
+            // Del2
+            // 
+            this.Del2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del2.HeaderText = "Del2";
+            this.Del2.Name = "Del2";
+            this.Del2.ReadOnly = true;
+            // 
+            // Del3
+            // 
+            this.Del3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del3.HeaderText = "Del3";
+            this.Del3.Name = "Del3";
+            this.Del3.ReadOnly = true;
+            // 
+            // Del4
+            // 
+            this.Del4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del4.HeaderText = "Del4";
+            this.Del4.Name = "Del4";
+            this.Del4.ReadOnly = true;
+            // 
+            // Del5
+            // 
+            this.Del5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del5.HeaderText = "Del5";
+            this.Del5.Name = "Del5";
+            this.Del5.ReadOnly = true;
+            // 
+            // Del6
+            // 
+            this.Del6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del6.HeaderText = "Del6";
+            this.Del6.Name = "Del6";
+            this.Del6.ReadOnly = true;
+            // 
+            // Del7
+            // 
+            this.Del7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del7.HeaderText = "Del7";
+            this.Del7.Name = "Del7";
+            this.Del7.ReadOnly = true;
+            // 
+            // Del8
+            // 
+            this.Del8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del8.HeaderText = "Del8";
+            this.Del8.Name = "Del8";
+            this.Del8.ReadOnly = true;
+            // 
+            // Del9
+            // 
+            this.Del9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del9.HeaderText = "Del9";
+            this.Del9.Name = "Del9";
+            this.Del9.ReadOnly = true;
+            // 
+            // Del10
+            // 
+            this.Del10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Del10.HeaderText = "Del10";
+            this.Del10.Name = "Del10";
+            this.Del10.ReadOnly = true;
+            // 
+            // Halo
+            // 
+            this.Halo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Halo.HeaderText = "Halo";
+            this.Halo.Name = "Halo";
+            this.Halo.ReadOnly = true;
+            // 
+            // tabPGraph
+            // 
+            this.tabPGraph.Controls.Add(this.btnHideAll);
+            this.tabPGraph.Controls.Add(this.label2);
+            this.tabPGraph.Controls.Add(this.checkedListBoxDEL);
+            this.tabPGraph.Controls.Add(this.chart1);
+            this.tabPGraph.Location = new System.Drawing.Point(4, 22);
+            this.tabPGraph.Name = "tabPGraph";
+            this.tabPGraph.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPGraph.Size = new System.Drawing.Size(751, 391);
+            this.tabPGraph.TabIndex = 3;
+            this.tabPGraph.Text = "Graph";
+            this.tabPGraph.UseVisualStyleBackColor = true;
+            this.tabPGraph.Enter += new System.EventHandler(this.tabPGraph_Enter);
+            // 
+            // btnHideAll
+            // 
+            this.btnHideAll.Location = new System.Drawing.Point(654, 211);
+            this.btnHideAll.Name = "btnHideAll";
+            this.btnHideAll.Size = new System.Drawing.Size(91, 29);
+            this.btnHideAll.TabIndex = 4;
+            this.btnHideAll.Text = "Cacher tout";
+            this.btnHideAll.UseVisualStyleBackColor = true;
+            this.btnHideAll.Click += new System.EventHandler(this.btnHideAll_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(192, 310);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(166, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Points de contrôle aux 30 minutes";
+            // 
+            // checkedListBoxDEL
+            // 
+            this.checkedListBoxDEL.FormattingEnabled = true;
+            this.checkedListBoxDEL.Items.AddRange(new object[] {
+            "DEL1",
+            "DEL2",
+            "DEL3",
+            "DEL4",
+            "DEL5",
+            "DEL6",
+            "DEL7",
+            "DEL8",
+            "DEL9",
+            "DEL10",
+            "HALO"});
+            this.checkedListBoxDEL.Location = new System.Drawing.Point(654, 6);
+            this.checkedListBoxDEL.Name = "checkedListBoxDEL";
+            this.checkedListBoxDEL.Size = new System.Drawing.Size(91, 199);
+            this.checkedListBoxDEL.TabIndex = 1;
+            this.checkedListBoxDEL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxDEL_ItemCheck);
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Location = new System.Drawing.Point(6, 40);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(642, 267);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
             // 
             // Form1
             // 
@@ -863,7 +1054,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Votre Nom";
+            this.Text = "Jessy GM 😎";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -887,6 +1078,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPTableau.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPGraph.ResumeLayout(false);
+            this.tabPGraph.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -964,6 +1158,23 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPTableau;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Heure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Del10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Halo;
+        private System.Windows.Forms.TabPage tabPGraph;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckedListBox checkedListBoxDEL;
+        private System.Windows.Forms.Button btnHideAll;
     }
 }
 
